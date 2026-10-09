@@ -216,15 +216,15 @@ window.PORTFOLIO_DATA = {
       "play_url": "games/qingyu-radio/index.html"
     },
     {
-      "id": "touqi",
+      "id": "zhideng",
       "category": "interactive",
       "title": {
-        "zh": "头七（暂名）",
-        "en": "The Seventh Night"
+        "zh": "纸灯",
+        "en": "Paper Lantern"
       },
       "highlight": {
-        "zh": "互动叙事 AVG ｜ 开发中",
-        "en": "Interactive narrative | In development"
+        "zh": "互动叙事 AVG ｜ 即将上线",
+        "en": "Interactive narrative AVG | Coming soon"
       },
       "year": "2026",
       "cover": "",

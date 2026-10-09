@@ -296,21 +296,60 @@ html[lang="en"] .ip-hero__tagline {
   gap: clamp(1.2rem, 3.5vw, 3.5rem);
 }
 
+.ip-characters {
+  position: relative;
+  isolation: isolate;
+  border-bottom-color: rgba(58, 42, 31, 0.14);
+}
+
+.ip-characters::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: radial-gradient(90% 72% at 30% 38%, #fbf5ea 0%, #f4ecdf 48%, #eadfcd 100%);
+}
+
+.ip-characters .ip-section__number {
+  color: #b9573f;
+}
+
+.ip-characters .ip-section__heading h2 {
+  color: #2a1d14;
+}
+
 .character-card {
-  --character-accent: var(--gold);
+  --character-accent: #9a6117;
   min-width: 0;
-  border: 1px solid rgba(246, 234, 216, 0.15);
-  background:
-    radial-gradient(circle at 78% 18%, rgba(242, 184, 75, 0.08), transparent 17rem),
-    rgba(5, 5, 5, 0.72);
+  border: 0;
+  background: transparent;
 }
 
 .character-card--gutuan {
-  --character-accent: var(--ip-peach);
+  --character-accent: #b9573f;
 }
 
 .character-card__media {
   aspect-ratio: 4 / 5;
+  overflow: visible;
+  background: transparent;
+}
+
+.character-card__media::after {
+  content: none;
+}
+
+.character-card__media img {
+  padding: clamp(0.5rem, 2vw, 1.5rem);
+  object-fit: contain;
+  filter: drop-shadow(0 1.15rem 1.25rem rgba(90, 60, 30, 0.18));
+}
+
+.character-card__media .ip-watermark {
+  color: rgba(58, 42, 31, 0.72);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .character-card__body {
@@ -319,7 +358,7 @@ html[lang="en"] .ip-hero__tagline {
 
 .character-card__name {
   margin: 0;
-  color: var(--ip-cream);
+  color: #2a1d14;
   font-family: var(--serif-zh);
   font-size: clamp(2.1rem, 4.3vw, 4.4rem);
   font-weight: 300;
@@ -351,8 +390,8 @@ html[lang="en"] .character-card__quote {
 .character-card__description {
   margin: 1.35rem 0 0;
   padding-top: 1.25rem;
-  border-top: 1px solid rgba(246, 234, 216, 0.14);
-  color: var(--paper-muted);
+  border-top: 1px solid rgba(58, 42, 31, 0.15);
+  color: rgba(58, 42, 31, 0.8);
   font-size: 0.88rem;
   line-height: 1.85;
 }
@@ -386,13 +425,13 @@ html[lang="en"] .character-card__quote {
 }
 
 .character-card__detail-copy {
-  color: var(--paper-muted);
+  color: rgba(58, 42, 31, 0.78);
   font-size: 0.8rem;
   line-height: 1.8;
 }
 
 .character-card__magic-name {
-  color: var(--ip-cream);
+  color: #2a1d14;
   font-weight: 500;
 }
 
@@ -563,6 +602,45 @@ html[lang="en"] .character-card__quote {
   font-size: 0.82rem;
   line-height: 1.7;
   overflow-wrap: anywhere;
+}
+
+.expression-gallery {
+  margin-top: clamp(3.5rem, 7vw, 7rem);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.expression-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.5rem, 1.8vw, 1.8rem);
+  align-items: end;
+}
+
+.expression-card {
+  min-width: 0;
+  margin: 0;
+}
+
+.expression-card__media {
+  aspect-ratio: 3 / 4;
+  overflow: visible;
+  background: transparent;
+}
+
+.expression-card__media::after {
+  content: none;
+}
+
+.expression-card__media img {
+  object-fit: contain;
+  filter: drop-shadow(0 0.7rem 0.7rem rgba(0, 0, 0, 0.24));
+}
+
+.expression-card__media .ip-watermark {
+  right: 0.2rem;
+  bottom: 0.2rem;
+  font-size: 0.52rem;
 }
 
 .design-palette {
@@ -898,6 +976,11 @@ html[lang="en"] .character-card__quote {
   .design-sheet-grid,
   .keyframe-grid {
     grid-template-columns: 1fr;
+  }
+
+  .expression-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.1rem 0.65rem;
   }
 
   .character-grid {

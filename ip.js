@@ -15,6 +15,7 @@
       world: "世界观",
       characters: "角色",
       visual: "视觉风格",
+      expressions: "表情",
       palette: "色板",
       keyframes: "关键帧",
       likes: "喜欢",
@@ -32,6 +33,7 @@
       world: "World",
       characters: "Characters",
       visual: "Visual Style",
+      expressions: "Expressions",
       palette: "Palette",
       keyframes: "Keyframes",
       likes: "Likes",
@@ -178,8 +180,11 @@
       createElement("p", "character-card__description", description),
       details
     );
+    const characterCutout = ["dengrong", "gutuan"].includes(character.id)
+      ? `assets/ip/dengrong-gutuan/cutout/${character.id}-main.webp`
+      : character.image;
     article.append(
-      makeMediaFrame(character.image, name, "character-card__media"),
+      makeMediaFrame(characterCutout, name, "character-card__media"),
       body
     );
     characterGrid?.append(article);
@@ -343,6 +348,27 @@
     button.addEventListener("click", () => openLightbox(designSheets, index, button));
     figure.append(button, createElement("figcaption", "design-sheet__caption", caption));
     designSheetGrid?.append(figure);
+  });
+
+  const expressionGrid = document.querySelector("[data-expression-grid]");
+  expressionGrid?.replaceChildren();
+  const expressionCharacters = (Array.isArray(ip.characters) ? ip.characters : [])
+    .filter((character) => ["dengrong", "gutuan"].includes(character.id));
+  expressionCharacters.forEach((character) => {
+    const name = localize(character.name);
+    [4, 5, 6].forEach((poseNumber, poseIndex) => {
+      const poseLabel = language === "en"
+        ? `${name} · Expression ${poseIndex + 1}`
+        : `${name} · 表情 ${poseIndex + 1}`;
+      const figure = createElement("figure", `expression-card expression-card--${character.id} reveal`);
+      const media = makeMediaFrame(
+        `assets/ip/dengrong-gutuan/cutout/${character.id}-pose${poseNumber}.webp`,
+        poseLabel,
+        "expression-card__media"
+      );
+      figure.append(media, createElement("figcaption", "visually-hidden", poseLabel));
+      expressionGrid?.append(figure);
+    });
   });
 
   keyframes.forEach((frame, index) => {

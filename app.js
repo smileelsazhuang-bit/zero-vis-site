@@ -6,10 +6,32 @@
       navFilm: "电影",
       navSeries: "漫剧",
       navOriginals: "原创 IP",
+      navGames: "游戏",
+      navAboutContact: "关于 · 合作",
       navAbout: "关于",
       navContact: "合作",
       heroTitle: "一个人，也可以把故事做成电影。",
+      heroTitleLine1: "一个人，",
+      heroTitleLine2: "也可以把故事",
+      heroTitleLine3: "做成电影。",
+      heroEnglish: "One creator. Stories made into films.",
       heroSubtitle: "莊女士 ｜ AIGC 导演 · 原创 IP 创作者",
+      filmLede: "用 AI 完成编剧、导演、画面与配乐的短片作品。",
+      seriesLede: "长篇 AIGC 漫剧，点开海报扫码或跳转抖音观看。",
+      gamesLede: "可以直接在网页里玩的叙事游戏。",
+      pillarsLabel: "作品方向",
+      ipName: "灯绒与菇团",
+      ipTagline: "今天也有小魔法。",
+      ipBody: "灯绒常先看见可能，菇团常先动手试试。一只带着暖灯的月蛾，和一位戴着歪尖蘑菇帽的森林小伙伴，把普通日子过得有趣。",
+      dengrongName: "灯绒",
+      dengrongQuote: "「你看，这里亮了一点。」",
+      gutuanName: "菇团",
+      gutuanQuote: "「来，种点好玩的。」",
+      ipMeta: "原创绘本《今天也有小魔法》 · 180 幅画面",
+      ipButton: "进入 IP 世界 →",
+      featured: "FEATURED",
+      production: "制作中",
+      playNow: "开始游玩 →",
       about: "我是庄微 Elsa，深圳龙岗人。做了八年展馆和空间叙事，2026 年开始用 AI 拍片，创办了一灵视界。我相信 AI 不会替我做创作判断，但它让一个人也有机会把想象变成完整的作品。我想做的，是一个能慢慢长大、让人记住的 IP。",
       contact: "寻找制片、发行、IP 开发与联名的伙伴。",
       studioLabel: "一灵视界 · 公司",
@@ -74,10 +96,32 @@
       navFilm: "Films",
       navSeries: "Series",
       navOriginals: "Originals",
+      navGames: "Games",
+      navAboutContact: "About · Contact",
       navAbout: "About",
       navContact: "Contact",
       heroTitle: "One creator. Stories made into films.",
+      heroTitleLine1: "One creator.",
+      heroTitleLine2: "Stories made",
+      heroTitleLine3: "into films.",
+      heroEnglish: "One creator. Stories made into films.",
       heroSubtitle: "Zhuang Wei (Elsa) | AIGC Director · Original IP Creator",
+      filmLede: "Short films written, directed, rendered and scored with AI.",
+      seriesLede: "Long-form AIGC series — tap a poster to scan or watch on Douyin.",
+      gamesLede: "Story games you can play right in the browser.",
+      pillarsLabel: "Creative directions",
+      ipName: "Dengrong & Gutuan",
+      ipTagline: "A little magic, every day.",
+      ipBody: "Dengrong is often the first to spot a possibility; Gutuan is often the first to try it. A moon moth with a warm lantern and a forest friend in a crooked mushroom cap, making ordinary days more fun.",
+      dengrongName: "Dengrong",
+      dengrongQuote: ": “Look, it's a little brighter here.”",
+      gutuanName: "Gutuan",
+      gutuanQuote: ": “Come on, let's grow something fun.”",
+      ipMeta: "Picture book Today, a Little Magic · 180 illustrations",
+      ipButton: "Enter the world →",
+      featured: "FEATURED",
+      production: "In production",
+      playNow: "Play now →",
       about: "I'm Zhuang Wei (Elsa), from Longgang, Shenzhen. After eight years in spatial storytelling for museums and exhibitions, I began making films with AI in 2026 and founded Yiling Vision. AI doesn't make creative decisions for me — but it lets one person turn imagination into finished work. What I want to build is an IP that grows over time and stays with people.",
       contact: "Open to producers, distributors, and IP partners.",
       studioLabel: "The Studio",
@@ -202,6 +246,58 @@
     if (text !== undefined) node.textContent = text;
     return node;
   };
+
+  const awardEntries = language === "en"
+    ? [
+        ["FILM FESTIVAL", "Selected, 2026 Beijing International Film Festival × Baidu AIGC League"],
+        ["HACKATHON", "2nd Aranya Wave Film Festival Hackathon"],
+        ["AIMV", "AI music video | Second Prize, Waka Awards (Longgang)"],
+        ["SERIES", "More than ten AIGC series; The Fragile Beauty Who Flirts with the Boss reached #1 on the new suspense drama chart; Eggy King of the Stars entered the Douyin Future Drama Chart Top 30"]
+      ]
+    : [
+        ["FILM FESTIVAL", "《解限 0.03%》入围 2026 北京国际电影节百度 AIGC 未来创作联赛"],
+        ["HACKATHON", "入围第二届阿那亚海浪电影节黑客松"],
+        ["AIMV", "AIMV《星河落在龙岗》瓦卡奖龙岗赛区二等奖"],
+        ["SERIES", "十余部 AIGC 漫剧；《病美人在无限游戏里撩 BOSS》悬疑类漫剧新剧榜一；《星际蛋仔王》抖音短剧未来榜 Top30"]
+      ];
+
+  const awardsStrip = document.querySelector("[data-awards-strip]");
+  if (awardsStrip) {
+    const list = createElement("ul", "hero__awards");
+    awardEntries.forEach(([label, value]) => {
+      const item = document.createElement("li");
+      item.append(createElement("b", "", label), document.createTextNode(value));
+      list.append(item);
+    });
+    awardsStrip.replaceChildren(list);
+    awardsStrip.setAttribute("aria-label", language === "en" ? "Selected achievements" : "已有成绩");
+  }
+
+  document.querySelectorAll("[data-count]").forEach((node) => {
+    const category = node.dataset.count;
+    const count = works.filter((work) => work.category === category).length;
+    const number = String(count).padStart(2, "0");
+    node.textContent = language === "en"
+      ? `${number} works`
+      : `${number} ${category === "interactive" ? "个作品" : "部作品"}`;
+  });
+
+  const ipEntry = document.querySelector("[data-ip-entry]");
+  if (ipEntry && language === "en") {
+    const target = new URL(ipEntry.getAttribute("href"), window.location.href);
+    target.searchParams.set("lang", "en");
+    ipEntry.href = target.href;
+  }
+
+  const ipMeta = document.querySelector("[data-ip-meta]");
+  if (ipMeta && language === "en") {
+    const title = createElement("em", "", "Today, a Little Magic");
+    ipMeta.replaceChildren(
+      document.createTextNode("Picture book "),
+      title,
+      document.createTextNode(" · 180 illustrations")
+    );
+  }
 
   const copyPlainText = async (value) => {
     if (navigator.clipboard?.writeText) {
@@ -361,6 +457,9 @@
 
   videoClose?.addEventListener("click", closeVideoModal);
   videoModal?.addEventListener("close", clearVideoModal);
+  videoModal?.addEventListener("click", (event) => {
+    if (event.target === videoModal) closeVideoModal();
+  });
 
   const qrModal = document.querySelector("[data-qr-modal]");
   const qrModalImage = document.querySelector("[data-qr-modal-image]");
@@ -552,105 +651,115 @@
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1800);
   };
 
-  const buildWorkShell = (work, cardClass, index) => {
-    const article = createElement("article", `${cardClass} reveal`);
-    const hasVideo = hasBilibiliVideo(work);
-    const destination = hasVideo ? "" : workDestination(work);
-    const douyinLinkDetails = work.category === "series" ? getDouyinUrlDetails(destination) : null;
-    const hasDouyinLink = Boolean(douyinLinkDetails);
-    const link = createElement(destination && !hasDouyinLink ? "a" : "button", "work-link");
-    const title = localize(work.title);
-    const englishTitle = work.title && typeof work.title === "object" ? work.title.en : "";
-    const highlight = localize(work.highlight);
+  const createLazyImage = (work, className = "") => {
+    const image = createElement("img", className);
+    image.src = String(work.cover).replaceAll("\\", "/");
+    image.alt = localize(work.title);
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.addEventListener("error", () => image.remove(), { once: true });
+    return image;
+  };
 
-    article.style.setProperty("--orb-offset", `${-10 + (index % 4) * 3}%`);
+  const bindFilmAction = (button, work) => {
+    button.type = "button";
+    button.setAttribute("aria-haspopup", "dialog");
+    button.setAttribute("aria-label", localize(work.title));
+    button.addEventListener("click", () => openVideoModal(work, button));
+  };
+
+  const renderFilmFeature = (work) => {
+    const container = document.querySelector("[data-film-feature]");
+    if (!container || !work) return;
+    container.dataset.workId = work.id;
+
+    const media = createElement("button", "film-feature__media work-link");
+    bindFilmAction(media, work);
+    if (work.cover) media.append(createLazyImage(work));
+    const play = createElement("span", "play");
+    play.setAttribute("aria-hidden", "true");
+    media.append(play);
+
+    const copyBlock = document.createElement("div");
+    copyBlock.append(
+      createElement("span", "film-feature__tag", `${currentCopy.featured} · ${work.year || ""}`),
+      createElement("h3", "", localize(work.title)),
+      createElement("span", "en", work.title?.en || ""),
+      createElement("p", "hl", localize(work.highlight))
+    );
+    container.replaceChildren(media, copyBlock);
+  };
+
+  const renderFilmCard = (work) => {
+    const article = createElement("article", "card film-card-small reveal");
     article.dataset.workId = work.id;
-    if (hasDouyinLink) article.classList.add("has-watch-link");
-    if (hasVideo) {
-      link.type = "button";
-      link.setAttribute("aria-haspopup", "dialog");
-      link.addEventListener("click", () => openVideoModal(work, link));
-    } else if (hasDouyinLink) {
-      link.type = "button";
-      link.setAttribute("aria-haspopup", "dialog");
-      link.addEventListener("click", () => openDouyinModal(work, destination, link, {
+    const action = createElement("button", "card__action work-link");
+    if (hasBilibiliVideo(work)) {
+      bindFilmAction(action, work);
+    } else {
+      action.type = "button";
+      action.setAttribute("aria-label", localize(work.title));
+      action.addEventListener("click", showComingSoon);
+    }
+
+    const media = createElement("div", "card__media");
+    if (work.cover) {
+      media.append(createLazyImage(work));
+    } else {
+      media.append(
+        createElement("span", "card__placeholder", localize(work.title)),
+        createElement("span", "badge", currentCopy.production)
+      );
+    }
+    if (hasBilibiliVideo(work)) {
+      const play = createElement("span", "play");
+      play.setAttribute("aria-hidden", "true");
+      media.append(play);
+    }
+    action.append(
+      media,
+      createElement("h4", "", localize(work.title)),
+      createElement("span", "en", work.title?.en || ""),
+      createElement("p", "hl", localize(work.highlight))
+    );
+    article.append(action);
+    return article;
+  };
+
+  const renderSeriesCard = (work) => {
+    const article = createElement("article", "card poster series-card reveal");
+    article.dataset.workId = work.id;
+    const details = getDouyinUrlDetails(work.link_cn);
+    const action = createElement("button", "card__action work-link");
+    action.type = "button";
+    action.setAttribute("aria-label", localize(work.title));
+    if (details) {
+      article.classList.add("has-watch-link");
+      action.setAttribute("aria-haspopup", "dialog");
+      action.addEventListener("click", () => openDouyinModal(work, work.link_cn, action, {
         seasonName: work.link_cn_2 ? currentCopy.seasonOneName : ""
       }));
-    } else if (destination) {
-      link.href = destination;
-      if (work.category !== "ip") {
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-      }
     } else {
-      link.type = "button";
-      link.addEventListener("click", showComingSoon);
-    }
-    link.setAttribute("aria-label", title);
-
-    const visual = createElement("div", "work-visual");
-    if (work.cover) {
-      const image = createElement("img");
-      image.src = String(work.cover).replaceAll("\\", "/");
-      image.alt = title;
-      image.loading = "lazy";
-      image.decoding = "async";
-      image.addEventListener("error", () => image.remove(), { once: true });
-      visual.append(image);
-    }
-    if (hasVideo) {
-      const playIndicator = createElement("span", "work-play");
-      playIndicator.setAttribute("aria-hidden", "true");
-      playIndicator.innerHTML = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="m27 22 16 10-16 10z"/></svg>';
-      visual.append(playIndicator);
-    }
-    if (hasDouyinLink) {
-      const watchBadge = createElement("span", "series-watch-badge", currentCopy.douyinWatch);
-      watchBadge.setAttribute("aria-hidden", "true");
-      visual.append(watchBadge);
-    }
-    visual.append(createElement("span", "work-ghost-title", title));
-
-    const meta = createElement("div", "work-meta");
-    const titleGroup = createElement("div", "work-title-group");
-    titleGroup.append(createElement("h3", "work-title", title));
-    if (englishTitle && englishTitle !== title) {
-      titleGroup.append(createElement("p", "work-title-en", englishTitle));
+      action.addEventListener("click", showComingSoon);
     }
 
-    if (cardClass === "film-card") {
-      const facts = createElement("dl", "work-facts");
-      const appendFact = (label, value, className = "") => {
-        const row = createElement("div", `work-fact${className ? ` ${className}` : ""}`);
-        row.append(createElement("dt", "work-fact__label", label));
-        const description = createElement("dd", "work-fact__value");
-        if (value instanceof Node) description.append(value);
-        else description.textContent = value;
-        row.append(description);
-        facts.append(row);
-      };
-      appendFact("YEAR", work.year || "【待补充】");
-      appendFact("CATEGORY", categoryLabels[work.category] || work.category || "【待补充】");
-      const highlightContent = createElement("span", "work-highlight-text");
-      if (hasAwardHighlight(work.highlight?.zh || "")) highlightContent.append(createLaurelIcon());
-      highlightContent.append(document.createTextNode(highlight));
-      appendFact("HIGHLIGHT", highlightContent, "work-fact--highlight");
-      meta.append(titleGroup, facts);
-    } else {
-      titleGroup.prepend(createElement("p", "work-year", work.year || "【待补充】"));
-      const highlightNode = createElement("p", "work-highlight");
-      if (hasAwardHighlight(work.highlight?.zh || "")) highlightNode.append(createLaurelIcon());
-      highlightNode.append(document.createTextNode(highlight));
-      meta.append(titleGroup, highlightNode);
-      if (work.category === "ip" && work.summary) {
-        meta.append(createElement("p", "work-summary", localize(work.summary)));
-      }
+    const media = createElement("div", "card__media");
+    if (work.cover) media.append(createLazyImage(work));
+    if (details) {
+      const watch = createElement("span", "watch series-watch-badge", currentCopy.douyinWatch);
+      watch.setAttribute("aria-hidden", "true");
+      media.append(watch);
     }
-    link.append(visual, meta);
-    article.append(link);
-    if (hasDouyinLink && work.link_cn_2) {
+    action.append(
+      media,
+      createElement("h4", "", localize(work.title)),
+      createElement("span", "en", work.title?.en || "")
+    );
+    article.append(action);
+
+    if (details && work.link_cn_2) {
       const seasonLinks = createElement("nav", "series-season-links");
-      seasonLinks.setAttribute("aria-label", title);
+      seasonLinks.setAttribute("aria-label", localize(work.title));
       [
         [currentCopy.seasonOne, currentCopy.seasonOneName, work.link_cn, false],
         [currentCopy.seasonTwo, currentCopy.seasonTwoName, work.link_cn_2, true]
@@ -658,10 +767,7 @@
         const seasonLink = createElement("button", "series-season-link", label);
         seasonLink.type = "button";
         seasonLink.setAttribute("aria-haspopup", "dialog");
-        seasonLink.addEventListener("click", () => openDouyinModal(work, value, seasonLink, {
-          seasonName,
-          secondary
-        }));
+        seasonLink.addEventListener("click", () => openDouyinModal(work, value, seasonLink, { seasonName, secondary }));
         seasonLinks.append(seasonLink);
       });
       article.append(seasonLinks);
@@ -669,25 +775,45 @@
     return article;
   };
 
-  const filmList = document.querySelector("[data-film-list]");
-  works.filter((work) => work.category === "film").forEach((work, index) => {
-    filmList?.append(buildWorkShell(work, "film-card", index));
-  });
+  const renderGameCard = (work) => {
+    const article = createElement("article", "game-wrap reveal");
+    article.dataset.workId = work.id;
+    const action = createElement(work.play_url ? "a" : "button", "game work-link");
+    action.setAttribute("aria-label", localize(work.title));
+    if (work.play_url) {
+      action.href = work.play_url;
+      action.target = "_blank";
+      action.rel = "noopener noreferrer";
+    } else {
+      action.type = "button";
+      action.addEventListener("click", showComingSoon);
+    }
+
+    const media = createElement("div", "game__media");
+    if (work.cover) media.append(createLazyImage(work));
+    else media.append(createElement("span", "game__title-art", localize(work.title)));
+    const body = createElement("div", "game__body");
+    body.append(
+      createElement("h4", "", localize(work.title)),
+      createElement("span", "en", work.title?.en || ""),
+      createElement("p", "hl", localize(work.highlight)),
+      createElement("span", `go${work.play_url ? "" : " go--soon"}`, work.play_url ? currentCopy.playNow : currentCopy.comingSoon)
+    );
+    action.append(media, body);
+    article.append(action);
+    return article;
+  };
+
+  const films = works.filter((work) => work.category === "film");
+  renderFilmFeature(films[0]);
+  const filmRail = document.querySelector("[data-film-rail]");
+  films.slice(1).forEach((work) => filmRail?.append(renderFilmCard(work)));
 
   const seriesGrid = document.querySelector("[data-series-grid]");
-  works.filter((work) => work.category === "series").forEach((work, index) => {
-    seriesGrid?.append(buildWorkShell(work, "series-card", index));
-  });
+  works.filter((work) => work.category === "series").forEach((work) => seriesGrid?.append(renderSeriesCard(work)));
 
-  const ipFeature = document.querySelector("[data-ip-feature]");
-  works.filter((work) => work.category === "ip").forEach((work, index) => {
-    ipFeature?.append(buildWorkShell(work, "ip-card", index));
-  });
-
-  const interactiveGrid = document.querySelector("[data-interactive-grid]");
-  works.filter((work) => work.category === "interactive").forEach((work, index) => {
-    interactiveGrid?.append(buildWorkShell(work, "interactive-card", index));
-  });
+  const gamesList = document.querySelector("[data-games-list]");
+  works.filter((work) => work.category === "interactive").forEach((work) => gamesList?.append(renderGameCard(work)));
 
   const hero = document.querySelector(".hero");
   const heroVideo = document.querySelector(".hero__video");

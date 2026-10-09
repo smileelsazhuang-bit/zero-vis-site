@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#090908">
+  <meta name="theme-color" content="#0b0a09">
   <meta name="color-scheme" content="dark">
   <meta name="robots" content="index, follow">
   <meta name="description" content="莊女士 ｜ AIGC 导演 · 原创 IP 创作者">
@@ -54,43 +54,44 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/NotoSerifSC-Light-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
   <script src="assets/js/ios-audio-unlock.js"></script>
   <script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#content">电影 Films</a>
 
-  <header class="site-header" aria-label="莊女士">
-    <a class="brand" href="#top">
-      <img class="brand__mark" src="assets/brand/mark.svg" alt="" width="28" height="28">
+  <header class="site-header hd" id="hd" aria-label="莊女士">
+    <a class="brand hd__brand" href="#top">
+      <img class="brand__mark" src="assets/brand/mark.svg" alt="" width="22" height="22">
       <span>莊女士</span>
     </a>
-    <nav class="site-nav" aria-label="作品">
-      <a href="#films" data-copy="navFilm">电影</a>
-      <a href="#series" data-copy="navSeries">漫剧</a>
-      <a href="#originals" data-copy="navOriginals">原创 IP</a>
-      <a href="#about" data-copy="navAbout">关于</a>
-      <a href="#contact" data-copy="navContact">合作</a>
+    <nav class="site-nav hd__nav" aria-label="作品">
+      <a href="#films"><i aria-hidden="true">01</i><span data-copy="navFilm">电影</span></a>
+      <a href="#series"><i aria-hidden="true">02</i><span data-copy="navSeries">漫剧</span></a>
+      <a href="#originals"><i aria-hidden="true">03</i><span data-copy="navOriginals">原创 IP</span></a>
+      <a href="#games"><i aria-hidden="true">04</i><span data-copy="navGames">游戏</span></a>
+      <a href="#about"><i aria-hidden="true">05</i><span data-copy="navAboutContact">关于 · 合作</span></a>
     </nav>
-    <a class="language-switch" href="?lang=en" data-language-switch>EN</a>
+    <a class="language-switch hd__lang" href="?lang=en" data-language-switch>EN</a>
   </header>
 
   <main id="content">
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <video class="hero__video" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      <img class="hero__poster" src="assets/hero-poster.jpg" width="1920" height="1080" fetchpriority="high" decoding="async" alt="">
+      <video class="hero__video hero__media" muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true"></video>
       <div class="hero__shade" aria-hidden="true"></div>
-      <div class="hero__content reveal">
-        <p class="hero__identity" data-copy="heroSubtitle">莊女士 ｜ AIGC 导演 · 原创 IP 创作者</p>
-        <h1 id="hero-title" data-copy="heroTitle">一个人，也可以把故事做成电影。</h1>
-        <p class="hero__credit">A FILM BY 莊女士 · ZHUANG WEI</p>
+      <div class="hero__content hero__inner reveal">
+        <p class="hero__identity eyebrow" data-copy="heroSubtitle">莊女士 ｜ AIGC 导演 · 原创 IP 创作者</p>
+        <h1 class="hero__title" id="hero-title">
+          <span data-copy="heroTitleLine1">一个人，</span>
+          <span data-copy="heroTitleLine2">也可以把故事</span>
+          <span data-copy="heroTitleLine3">做成电影。</span>
+        </h1>
+        <p class="hero__en" data-copy="heroEnglish">One creator. Stories made into films.</p>
       </div>
-      <a class="scroll-cue" href="#films" aria-label="电影 Films">
-        <span class="scroll-cue__label">SCROLL</span>
-        <span class="scroll-cue__line" aria-hidden="true"></span>
-      </a>
-    </section>
 
-    <aside class="awards-strip" aria-label="已有成绩">
+    <aside class="awards-strip" data-awards-strip aria-label="已有成绩">
       <div class="awards-strip__track">
         <ul class="awards-strip__group">
           <li><svg class="laurel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>《解限 0.03%》入围 2026 北京国际电影节百度 AIGC 未来创作联赛</span></li>
@@ -106,50 +107,105 @@
         </ul>
       </div>
     </aside>
+    </section>
 
-    <section class="work-section film-section" id="films" aria-labelledby="films-heading">
-      <div class="section-heading reveal">
-        <span class="section-heading__label" aria-hidden="true">01 — FILMS</span>
+    <nav class="pillars" data-copy-aria="pillarsLabel" aria-label="作品方向">
+      <a class="pillar pillar--film" href="#films">
+        <img src="assets/covers/jiexian.jpg" loading="lazy" decoding="async" alt="">
+        <span class="pillar__no">01</span><b data-copy="navFilm">电影</b><em>Films</em><span class="pillar__n" data-count="film"></span>
+      </a>
+      <a class="pillar pillar--series" href="#series">
+        <img src="assets/covers/yinianfengxi.jpg" loading="lazy" decoding="async" alt="">
+        <span class="pillar__no">02</span><b data-copy="navSeries">漫剧</b><em>Series</em><span class="pillar__n" data-count="series"></span>
+      </a>
+      <a class="pillar pillar--ip" href="#originals">
+        <img src="assets/ip/dengrong-gutuan/p158.jpg" loading="lazy" decoding="async" alt="">
+        <span class="pillar__no">03</span><b data-copy="navOriginals">原创 IP</b><em>Originals</em><span class="pillar__n" data-count="ip"></span>
+      </a>
+      <a class="pillar pillar--game" href="#games">
+        <img src="assets/covers/qingyu-radio.jpg" loading="lazy" decoding="async" alt="">
+        <span class="pillar__no">04</span><b data-copy="navGames">游戏</b><em>Games</em><span class="pillar__n" data-count="interactive"></span>
+      </a>
+    </nav>
+
+    <section class="sec sec--film work-section film-section" id="films" aria-labelledby="films-heading">
+      <header class="sec__head section-heading reveal">
+        <span class="sec__no section-heading__label" aria-hidden="true">01 — FILMS</span>
         <h2 id="films-heading" data-copy="navFilm">电影</h2>
-      </div>
-      <div class="film-list" data-film-list></div>
+        <p class="sec__lede" data-copy="filmLede">用 AI 完成编剧、导演、画面与配乐的短片作品。</p>
+      </header>
+      <div class="film-feature reveal" data-film-feature></div>
+      <div class="rail rail--film" data-film-rail></div>
     </section>
 
-    <section class="work-section series-section" id="series" aria-labelledby="series-heading">
-      <div class="section-heading reveal">
-        <span class="section-heading__label" aria-hidden="true">02 — SERIES</span>
+    <section class="sec sec--series work-section series-section" id="series" aria-labelledby="series-heading">
+      <header class="sec__head section-heading reveal">
+        <span class="sec__no section-heading__label" aria-hidden="true">02 — SERIES</span>
         <h2 id="series-heading" data-copy="navSeries">漫剧</h2>
-      </div>
-      <div class="series-grid" data-series-grid></div>
+        <p class="sec__lede" data-copy="seriesLede">长篇 AIGC 漫剧，点开海报扫码或跳转抖音观看。</p>
+      </header>
+      <div class="rail rail--poster series-grid" data-series-grid></div>
     </section>
 
-    <section class="work-section originals-section" id="originals" aria-labelledby="originals-heading">
-      <div class="section-heading reveal">
-        <span class="section-heading__label" aria-hidden="true">03 — ORIGINALS</span>
-        <h2 id="originals-heading" data-copy="navOriginals">原创 IP</h2>
+    <section class="sec sec--ip originals-section" id="originals" aria-labelledby="originals-heading">
+      <div class="ip reveal" data-work-id="ip-main">
+        <div class="ip__stage" aria-hidden="true">
+          <img class="ip__char ip__char--a" src="assets/ip/dengrong-gutuan/cutout/dengrong-main.webp" loading="lazy" decoding="async" alt="">
+          <img class="ip__char ip__char--b" src="assets/ip/dengrong-gutuan/cutout/gutuan-main.webp" loading="lazy" decoding="async" alt="">
+          <span class="ip__glow"></span>
+        </div>
+        <div class="ip__copy">
+          <span class="sec__no" aria-hidden="true">03 — ORIGINALS</span>
+          <h2 id="originals-heading" data-copy="ipName">灯绒与菇团</h2>
+          <p class="ip__tag" data-copy="ipTagline">今天也有小魔法。</p>
+          <p class="ip__body" data-copy="ipBody">灯绒常先看见可能，菇团常先动手试试。一只带着暖灯的月蛾，和一位戴着歪尖蘑菇帽的森林小伙伴，把普通日子过得有趣。</p>
+          <div class="ip__quotes">
+            <p><b data-copy="dengrongName">灯绒</b><span data-copy="dengrongQuote">「你看，这里亮了一点。」</span></p>
+            <p><b data-copy="gutuanName">菇团</b><span data-copy="gutuanQuote">「来，种点好玩的。」</span></p>
+          </div>
+          <p class="ip__meta" data-ip-meta>原创绘本《今天也有小魔法》 · 180 幅画面</p>
+          <a class="btn btn--ink work-link" href="ip.html?id=dengrong-gutuan" data-ip-entry data-copy="ipButton">进入 IP 世界 →</a>
+        </div>
       </div>
-      <div class="ip-feature" data-ip-feature></div>
-      <div class="interactive-grid" data-interactive-grid></div>
+      <div class="ip__faces" aria-hidden="true">
+        <img src="assets/ip/dengrong-gutuan/cutout/dengrong-pose4.webp" loading="lazy" decoding="async" alt="">
+        <img src="assets/ip/dengrong-gutuan/cutout/gutuan-pose5.webp" loading="lazy" decoding="async" alt="">
+        <img src="assets/ip/dengrong-gutuan/cutout/dengrong-pose5.webp" loading="lazy" decoding="async" alt="">
+        <img src="assets/ip/dengrong-gutuan/cutout/gutuan-pose4.webp" loading="lazy" decoding="async" alt="">
+        <img src="assets/ip/dengrong-gutuan/cutout/dengrong-pose6.webp" loading="lazy" decoding="async" alt="">
+        <img src="assets/ip/dengrong-gutuan/cutout/gutuan-pose6.webp" loading="lazy" decoding="async" alt="">
+      </div>
     </section>
 
-    <section class="about-contact" id="about" aria-labelledby="about-heading">
-      <div class="about-block reveal">
+    <section class="sec sec--game work-section games-section" id="games" aria-labelledby="games-heading">
+      <header class="sec__head section-heading reveal">
+        <span class="sec__no section-heading__label" aria-hidden="true">04 — GAMES</span>
+        <h2 id="games-heading" data-copy="navGames">游戏</h2>
+        <p class="sec__lede" data-copy="gamesLede">可以直接在网页里玩的叙事游戏。</p>
+      </header>
+      <div class="games" data-games-list></div>
+    </section>
+
+    <section class="sec sec--about about-contact" id="about" aria-labelledby="about-heading">
+      <div class="about about-block reveal">
         <div class="section-heading section-heading--compact">
-          <span class="section-heading__label" aria-hidden="true">04 — ABOUT</span>
+          <span class="sec__no section-heading__label" aria-hidden="true">05 — ABOUT</span>
           <h2 id="about-heading" data-copy="navAbout">关于</h2>
         </div>
-        <p class="about-copy" data-copy="about">我是庄微 Elsa，深圳龙岗人。做了八年展馆和空间叙事，2026 年开始用 AI 拍片，创办了一灵视界。我相信 AI 不会替我做创作判断，但它让一个人也有机会把想象变成完整的作品。我想做的，是一个能慢慢长大、让人记住的 IP。</p>
+        <div class="about__body">
+          <p class="about-copy about__text" data-copy="about">我是庄微 Elsa，深圳龙岗人。做了八年展馆和空间叙事，2026 年开始用 AI 拍片，创办了一灵视界。我相信 AI 不会替我做创作判断，但它让一个人也有机会把想象变成完整的作品。我想做的，是一个能慢慢长大、让人记住的 IP。</p>
         <dl class="film-credits" aria-label="创作署名">
           <div><dt>DIRECTOR</dt><dd>莊女士</dd></div>
           <div><dt>WRITER</dt><dd>莊女士</dd></div>
           <div><dt>PRODUCER</dt><dd>莊女士</dd></div>
         </dl>
         <p class="studio-credit">一灵视界（深圳）文化科技有限公司</p>
+        </div>
       </div>
 
       <div class="contact-block reveal" id="contact">
         <div class="section-heading section-heading--compact">
-          <span class="section-heading__label" aria-hidden="true">05 — CONTACT</span>
+          <span class="sec__no section-heading__label" aria-hidden="true">05 — CONTACT</span>
           <h2 data-copy="navContact">合作</h2>
         </div>
         <p class="contact-copy" data-copy="contact">寻找制片、发行、IP 开发与联名的伙伴。</p>
@@ -244,7 +300,7 @@
         </div>
       </div>
 
-      <footer class="site-footer">
+      <footer class="site-footer ft">
         <span class="footer-brand"><img src="assets/brand/mark.svg" alt="" width="20" height="20"><span>莊女士</span></span>
         <nav class="footer-links" data-copy-aria="footerLinksLabel" aria-label="社交与邮箱链接">
           <a class="social-link" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer">

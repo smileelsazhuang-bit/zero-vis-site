@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /_preview/
+Disallow: /scripts/
+
+Sitemap: https://zero-vis.cn/sitemap.xml

@@ -8,9 +8,6 @@
       navOriginals: "原创 IP",
       navAbout: "关于",
       navContact: "合作",
-      ipStatusLabel: "原创 IP",
-      ipStatusTitle: "原创 IP · 筹备中",
-      ipStatusTagline: "一个正在生长的世界，敬请期待。",
       heroTitle: "一个人，也可以把故事做成电影。",
       heroSubtitle: "莊女士 ｜ AIGC 导演 · 原创 IP 创作者",
       about: "我是庄微 Elsa，深圳龙岗人。做了八年展馆和空间叙事，2026 年开始用 AI 拍片，创办了一灵视界。我相信 AI 不会替我做创作判断，但它让一个人也有机会把想象变成完整的作品。我想做的，是一个能慢慢长大、让人记住的 IP。",
@@ -79,9 +76,6 @@
       navOriginals: "Originals",
       navAbout: "About",
       navContact: "Contact",
-      ipStatusLabel: "Original IP",
-      ipStatusTitle: "Original IP · In development",
-      ipStatusTagline: "A world in the making. Coming soon.",
       heroTitle: "One creator. Stories made into films.",
       heroSubtitle: "Zhuang Wei (Elsa) | AIGC Director · Original IP Creator",
       about: "I'm Zhuang Wei (Elsa), from Longgang, Shenzhen. After eight years in spatial storytelling for museums and exhibitions, I began making films with AI in 2026 and founded Yiling Vision. AI doesn't make creative decisions for me — but it lets one person turn imagination into finished work. What I want to build is an IP that grows over time and stays with people.",
@@ -161,17 +155,7 @@
   let activeQrTrigger = null;
 
   document.documentElement.lang = language === "en" ? "en" : "zh-CN";
-  if (document.body.classList.contains("ip-page")) {
-    document.title = language === "en"
-      ? `${currentCopy.ipStatusTitle} | Zhuang Wei`
-      : `${currentCopy.ipStatusTitle}｜莊女士`;
-    const description = document.querySelector('meta[name="description"]');
-    if (description) description.content = currentCopy.ipStatusTagline;
-    const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.content = currentCopy.ipStatusTitle;
-    const ogDescription = document.querySelector('meta[property="og:description"]');
-    if (ogDescription) ogDescription.content = currentCopy.ipStatusTagline;
-  } else if (!document.body.classList.contains("not-found-page")) {
+  if (!document.body.classList.contains("ip-page") && !document.body.classList.contains("not-found-page")) {
     document.title = language === "en"
       ? "Zhuang Wei (Elsa) | AIGC Director · Original IP Creator"
       : "莊女士｜AIGC 导演 · 原创 IP 创作者";
@@ -554,7 +538,7 @@
 
   const workDestination = (work) => {
     if (work.category === "interactive") return work.play_url || "";
-    if (work.category === "ip") return "";
+    if (work.category === "ip") return work.ip_page || "";
     if (work.category === "series") return work.link_cn || "";
     return (language === "en" ? work.link_global : work.link_cn) || "";
   };
@@ -575,12 +559,9 @@
     const douyinLinkDetails = work.category === "series" ? getDouyinUrlDetails(destination) : null;
     const hasDouyinLink = Boolean(douyinLinkDetails);
     const link = createElement(destination && !hasDouyinLink ? "a" : "button", "work-link");
-    const isIpInDevelopment = work.category === "ip";
-    const title = isIpInDevelopment ? currentCopy.ipStatusTitle : localize(work.title);
-    const englishTitle = isIpInDevelopment
-      ? ""
-      : (work.title && typeof work.title === "object" ? work.title.en : "");
-    const highlight = isIpInDevelopment ? currentCopy.ipStatusTagline : localize(work.highlight);
+    const title = localize(work.title);
+    const englishTitle = work.title && typeof work.title === "object" ? work.title.en : "";
+    const highlight = localize(work.highlight);
 
     article.style.setProperty("--orb-offset", `${-10 + (index % 4) * 3}%`);
     article.dataset.workId = work.id;
@@ -656,9 +637,7 @@
       appendFact("HIGHLIGHT", highlightContent, "work-fact--highlight");
       meta.append(titleGroup, facts);
     } else {
-      if (!isIpInDevelopment) {
-        titleGroup.prepend(createElement("p", "work-year", work.year || "【待补充】"));
-      }
+      titleGroup.prepend(createElement("p", "work-year", work.year || "【待补充】"));
       const highlightNode = createElement("p", "work-highlight");
       if (hasAwardHighlight(work.highlight?.zh || "")) highlightNode.append(createLaurelIcon());
       highlightNode.append(document.createTextNode(highlight));

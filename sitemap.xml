@@ -7,4 +7,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://zero-vis.cn/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://zero-vis.cn/"/>
   </url>
+  <url>
+    <loc>https://zero-vis.cn/ip.html?id=dengrong-gutuan</loc>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://zero-vis.cn/ip.html?id=dengrong-gutuan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://zero-vis.cn/ip.html?id=dengrong-gutuan&amp;lang=en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://zero-vis.cn/ip.html?id=dengrong-gutuan"/>
+  </url>
 </urlset>

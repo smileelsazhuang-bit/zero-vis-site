@@ -234,16 +234,16 @@ window.PORTFOLIO_DATA = {
       "id": "ip-main",
       "category": "ip",
       "title": {
-        "zh": "【待补充：主打原创 IP 名称】",
-        "en": "【待补充】"
+        "zh": "灯绒与菇团",
+        "en": "Dengrong & Gutuan"
       },
       "highlight": {
-        "zh": "原创 IP ｜ 筹备中",
-        "en": "Original IP | In development"
+        "zh": "原创 IP ｜ 原创绘本《今天也有小魔法》",
+        "en": "Original IP | Picture book *Today, a Little Magic*"
       },
       "year": "2026",
-      "cover": "",
-      "ip_page": "ip.html?id=xxx"
+      "cover": "assets/covers/dengrong-gutuan.jpg",
+      "ip_page": "ip.html?id=dengrong-gutuan"
     }
   ]
 };

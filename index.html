@@ -158,6 +158,19 @@
     </section>
   </main>
 
+  <dialog class="video-modal" data-video-modal aria-labelledby="video-modal-title">
+    <div class="video-modal__shell">
+      <button class="video-modal__close" type="button" data-video-close aria-label="关闭">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+      <div class="video-modal__frame" data-video-frame></div>
+      <footer class="video-modal__footer">
+        <h2 id="video-modal-title" data-video-title></h2>
+        <a data-video-link target="_blank" rel="noopener noreferrer" data-copy="videoWatch">在 B 站观看 ↗</a>
+      </footer>
+    </div>
+  </dialog>
+
   <div class="toast" role="status" aria-live="polite" aria-atomic="true" data-toast></div>
 
   <script src="data.js" defer></script>

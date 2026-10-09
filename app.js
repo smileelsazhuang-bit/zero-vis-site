@@ -18,7 +18,10 @@
       contactPlaceholder: "【待补充：对外公开用哪个邮箱/微信】",
       socialBilibili: "B站",
       icp: "【待补充：备案号】",
-      comingSoon: "即将上线"
+      comingSoon: "即将上线",
+      videoClose: "关闭播放器",
+      videoWatch: "在 B 站观看 ↗",
+      videoFrameTitle: "B 站播放器"
     },
     en: {
       navFilm: "Films",
@@ -36,7 +39,10 @@
       contactPlaceholder: "【待补充：对外公开用哪个邮箱/微信】",
       socialBilibili: "Bilibili",
       icp: "【待补充：备案号】",
-      comingSoon: "Coming soon"
+      comingSoon: "Coming soon",
+      videoClose: "Close player",
+      videoWatch: "Watch on Bilibili ↗",
+      videoFrameTitle: "Bilibili player"
     }
   };
 
@@ -49,6 +55,7 @@
   }[language];
   const works = Array.isArray(window.PORTFOLIO_DATA?.works) ? window.PORTFOLIO_DATA.works : [];
   let toastTimer = 0;
+  let activeVideoTrigger = null;
 
   document.documentElement.lang = language === "en" ? "en" : "zh-CN";
   if (document.body.classList.contains("ip-page")) {
@@ -112,6 +119,60 @@
   };
 
   const hasAwardHighlight = (value) => /入围|奖|榜/.test(value);
+  const hasBilibiliVideo = (work) => /^BV[0-9A-Za-z]{10}$/.test(work?.bvid || "");
+
+  const videoModal = document.querySelector("[data-video-modal]");
+  const videoFrame = document.querySelector("[data-video-frame]");
+  const videoTitle = document.querySelector("[data-video-title]");
+  const videoLink = document.querySelector("[data-video-link]");
+  const videoClose = document.querySelector("[data-video-close]");
+
+  const clearVideoModal = () => {
+    videoFrame?.replaceChildren();
+    document.body.classList.remove("is-video-modal-open");
+    if (activeVideoTrigger?.isConnected) activeVideoTrigger.focus();
+    activeVideoTrigger = null;
+  };
+
+  const closeVideoModal = () => {
+    if (!videoModal) return;
+    if (videoModal.open && typeof videoModal.close === "function") {
+      videoModal.close();
+    } else {
+      videoModal.removeAttribute("open");
+      clearVideoModal();
+    }
+  };
+
+  const openVideoModal = (work, trigger) => {
+    if (!videoModal || !videoFrame || !videoTitle || !videoLink || !hasBilibiliVideo(work)) return;
+
+    const playerUrl = new URL("https://player.bilibili.com/player.html");
+    playerUrl.searchParams.set("bvid", work.bvid);
+    playerUrl.searchParams.set("autoplay", "1");
+    playerUrl.searchParams.set("high_quality", "1");
+    playerUrl.searchParams.set("danmaku", "0");
+
+    const iframe = document.createElement("iframe");
+    iframe.src = playerUrl.href;
+    iframe.title = `${localize(work.title)} · ${currentCopy.videoFrameTitle}`;
+    iframe.allow = "autoplay; fullscreen";
+    iframe.setAttribute("allowfullscreen", "");
+    videoFrame.replaceChildren(iframe);
+    videoTitle.textContent = localize(work.title);
+    videoLink.textContent = currentCopy.videoWatch;
+    videoLink.href = work.link_cn || `https://www.bilibili.com/video/${work.bvid}`;
+    videoClose?.setAttribute("aria-label", currentCopy.videoClose);
+    activeVideoTrigger = trigger;
+    document.body.classList.add("is-video-modal-open");
+
+    if (typeof videoModal.showModal === "function") videoModal.showModal();
+    else videoModal.setAttribute("open", "");
+    videoClose?.focus();
+  };
+
+  videoClose?.addEventListener("click", closeVideoModal);
+  videoModal?.addEventListener("close", clearVideoModal);
 
   const workDestination = (work) => {
     if (work.category === "interactive") return work.play_url || "";
@@ -130,7 +191,8 @@
 
   const buildWorkShell = (work, cardClass, index) => {
     const article = createElement("article", `${cardClass} reveal`);
-    const destination = workDestination(work);
+    const hasVideo = hasBilibiliVideo(work);
+    const destination = hasVideo ? "" : workDestination(work);
     const link = createElement(destination ? "a" : "button", "work-link");
     const isIpInDevelopment = work.category === "ip";
     const title = isIpInDevelopment ? currentCopy.ipStatusTitle : localize(work.title);
@@ -140,7 +202,11 @@
     const highlight = isIpInDevelopment ? currentCopy.ipStatusTagline : localize(work.highlight);
 
     article.style.setProperty("--orb-offset", `${-10 + (index % 4) * 3}%`);
-    if (destination) {
+    if (hasVideo) {
+      link.type = "button";
+      link.setAttribute("aria-haspopup", "dialog");
+      link.addEventListener("click", () => openVideoModal(work, link));
+    } else if (destination) {
       link.href = destination;
       if (work.category !== "ip") {
         link.target = "_blank";
@@ -161,6 +227,12 @@
       image.decoding = "async";
       image.addEventListener("error", () => image.remove(), { once: true });
       visual.append(image);
+    }
+    if (hasVideo) {
+      const playIndicator = createElement("span", "work-play");
+      playIndicator.setAttribute("aria-hidden", "true");
+      playIndicator.innerHTML = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="m27 22 16 10-16 10z"/></svg>';
+      visual.append(playIndicator);
     }
     visual.append(createElement("span", "work-ghost-title", title));
 

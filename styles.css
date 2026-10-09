@@ -429,6 +429,42 @@ html[lang="en"] .hero h1 {
   transform: scale(1.025);
 }
 
+.work-play {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  width: clamp(3.75rem, 6vw, 5.75rem);
+  aspect-ratio: 1;
+  color: var(--gold);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: opacity 320ms ease, transform 420ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.work-play svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.work-play circle {
+  fill: rgba(9, 9, 8, 0.62);
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.work-play path {
+  fill: currentColor;
+}
+
+.work-link:hover .work-play,
+.work-link:focus-visible .work-play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
 .work-meta {
   min-width: 0;
 }
@@ -568,6 +604,104 @@ html[lang="en"] .hero h1 {
 
 .interactive-card .work-title {
   font-size: clamp(1.65rem, 2.6vw, 2.7rem);
+}
+
+body.is-video-modal-open {
+  overflow: hidden;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  color: var(--paper);
+  border: 0;
+  background: rgba(0, 0, 0, 0.98);
+}
+
+.video-modal:not([open]) {
+  display: none;
+}
+
+.video-modal::backdrop {
+  background: rgba(0, 0, 0, 0.96);
+}
+
+.video-modal__shell {
+  box-sizing: border-box;
+  min-height: 100%;
+  width: 100%;
+  padding: max(4.5rem, env(safe-area-inset-top)) 4vw max(2rem, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.4rem;
+}
+
+.video-modal__frame {
+  width: min(92vw, calc((100dvh - 10rem) * 16 / 9), 1440px);
+  aspect-ratio: 16 / 9;
+  background: #000;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.65);
+}
+
+.video-modal__frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #000;
+}
+
+.video-modal__close {
+  position: fixed;
+  z-index: 2;
+  top: max(1.1rem, env(safe-area-inset-top));
+  right: max(1.1rem, env(safe-area-inset-right));
+  width: 2.9rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  border: 1px solid rgba(200, 164, 106, 0.48);
+  border-radius: 50%;
+  background: rgba(9, 9, 8, 0.84);
+}
+
+.video-modal__close svg {
+  width: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.video-modal__footer {
+  width: min(92vw, calc((100dvh - 10rem) * 16 / 9), 1440px);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.video-modal__footer h2 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  font-weight: 400;
+}
+
+.video-modal__footer a {
+  flex: none;
+  color: var(--gold);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
 }
 
 .about-contact {
@@ -1710,6 +1844,33 @@ html[lang="en"] .contact-copy {
 
   .site-footer {
     width: 100%;
+  }
+
+  .video-modal__shell {
+    padding: max(4.75rem, env(safe-area-inset-top)) 0 max(1.25rem, env(safe-area-inset-bottom));
+    gap: 1rem;
+  }
+
+  .video-modal__frame {
+    width: 100vw;
+  }
+
+  .video-modal__footer {
+    width: calc(100vw - 2rem);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .video-modal__footer h2 {
+    font-size: clamp(1.35rem, 7vw, 1.9rem);
+  }
+}
+
+@media (hover: none) {
+  .work-play {
+    opacity: 0.82;
+    transform: translate(-50%, -50%) scale(0.94);
   }
 }
 

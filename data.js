@@ -15,8 +15,9 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/last-thought.jpg",
-      "link_cn": "",
-      "link_global": ""
+      "link_cn": "https://www.bilibili.com/video/BV1vtHL6REca",
+      "link_global": "",
+      "bvid": "BV1vtHL6REca"
     },
     {
       "id": "jiexian",
@@ -31,8 +32,9 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/jiexian.jpg",
-      "link_cn": "",
-      "link_global": ""
+      "link_cn": "https://www.bilibili.com/video/BV1sjSdBXEhw",
+      "link_global": "",
+      "bvid": "BV1sjSdBXEhw"
     },
     {
       "id": "mingtianjian",
@@ -47,7 +49,25 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/mingtianjian.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.bilibili.com/video/BV1Gxbw6NEUy",
+      "link_global": "",
+      "bvid": "BV1Gxbw6NEUy"
+    },
+    {
+      "id": "guandao",
+      "category": "film",
+      "title": {
+        "zh": "关刀（预告片）",
+        "en": "Guan Dao (Trailer)"
+      },
+      "highlight": {
+        "zh": "预告片 ｜ 执刀以卫道，觉世以归心",
+        "en": "Trailer"
+      },
+      "year": "2026",
+      "cover": "assets/covers/guandao.jpg",
+      "bvid": "BV1RFGu67Efq",
+      "link_cn": "https://www.bilibili.com/video/BV1RFGu67Efq",
       "link_global": ""
     },
     {
@@ -63,8 +83,9 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/xinghe-longgang.jpg",
-      "link_cn": "",
-      "link_global": ""
+      "link_cn": "https://www.bilibili.com/video/BV12Jtb6FEGg",
+      "link_global": "",
+      "bvid": "BV12Jtb6FEGg"
     },
     {
       "id": "cheese",

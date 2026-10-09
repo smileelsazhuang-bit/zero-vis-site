@@ -116,7 +116,7 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/binmeiren.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.douyin.com/video/7665623604050005282",
       "link_global": ""
     },
     {

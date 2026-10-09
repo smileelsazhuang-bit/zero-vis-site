@@ -1097,6 +1097,21 @@
   letter-spacing: 0.16em;
 }
 
+/* Keep the shared toast functional without leaving its empty frame in full-page captures. */
+.home-page .toast {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 240ms ease, opacity 180ms ease, visibility 0s linear 240ms;
+}
+
+.home-page .toast.is-visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+
 html[lang="en"] .home-page .hero__title,
 html[lang="en"] .home-page .ip__copy h2,
 html[lang="en"] .home-page .about h2,
@@ -1213,7 +1228,12 @@ html[lang="en"] .home-page .contact-copy {
   }
 
   .home-page .hero__inner {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-right: var(--gut);
     padding-bottom: 36px;
+    padding-left: var(--gut);
   }
 
   .home-page .eyebrow,
@@ -1341,9 +1361,11 @@ html[lang="en"] .home-page .contact-copy {
   .home-page .rail,
   .home-page .series-grid {
     padding: 0 var(--gut) 6px;
+    padding-inline: var(--gut);
     display: flex;
     gap: 14px;
     overflow-x: auto;
+    scroll-padding-inline: var(--gut);
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
@@ -1468,6 +1490,55 @@ html[lang="en"] .home-page .contact-copy {
   html[lang="en"] .home-page .about-copy {
     font-size: 16px;
     line-height: 1.95;
+  }
+
+  .home-page .film-credits {
+    height: 64px;
+    margin-top: 24px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    background: transparent;
+  }
+
+  .home-page .film-credits div {
+    min-width: 0;
+    padding: 7px 4px;
+    display: grid;
+    align-content: center;
+  }
+
+  .home-page .film-credits div + div {
+    border-left: 1px solid rgba(200, 164, 106, 0.24);
+  }
+
+  .home-page .film-credits dt {
+    font-size: 9px;
+    line-height: 1.25;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .home-page .film-credits dd {
+    margin: 4px 0 0;
+    font-size: 14px;
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+  }
+
+  .home-page .studio-profile__quote,
+  html[lang="en"] .home-page .studio-profile__quote {
+    margin: 3rem auto 0;
+    font-size: clamp(22px, 6.4vw, 28px);
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  .home-page .studio-profile__services-label {
+    margin-top: 16px;
+  }
+
+  .home-page .studio-profile__closing {
+    margin-top: 20px;
   }
 
   .home-page .contact-block {

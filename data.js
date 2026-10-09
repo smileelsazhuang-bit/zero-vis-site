@@ -132,7 +132,7 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/xingjidanzai.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.douyin.com/collection/7651161885865150504/1",
       "link_global": ""
     },
     {
@@ -148,7 +148,7 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/lishidailiren.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.douyin.com/video/7655536295854329088",
       "link_global": ""
     },
     {
@@ -164,7 +164,8 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/yinianfengxi.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.douyin.com/collection/7624142879565105192/1",
+      "link_cn_2": "https://www.douyin.com/collection/7639679592260700187/1",
       "link_global": ""
     },
     {
@@ -180,7 +181,23 @@ window.PORTFOLIO_DATA = {
       },
       "year": "2026",
       "cover": "assets/covers/louyuanzhou.jpg",
-      "link_cn": "",
+      "link_cn": "https://www.douyin.com/collection/7656711058631723062/1",
+      "link_global": ""
+    },
+    {
+      "id": "xingji-xinpian",
+      "category": "series",
+      "title": {
+        "zh": "我凭游戏芯片登顶星际之巅",
+        "en": "Game Chip to the Stars"
+      },
+      "highlight": {
+        "zh": "AIGC 漫剧 ｜ 217 集",
+        "en": "AIGC drama | 217 episodes"
+      },
+      "year": "2026",
+      "cover": "assets/covers/xingji-xinpian.jpg",
+      "link_cn": "https://www.douyin.com/collection/7691707806940694568/1",
       "link_global": ""
     },
     {

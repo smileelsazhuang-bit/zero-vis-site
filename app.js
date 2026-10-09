@@ -21,7 +21,10 @@
       comingSoon: "即将上线",
       videoClose: "关闭播放器",
       videoWatch: "在 B 站观看 ↗",
-      videoFrameTitle: "B 站播放器"
+      videoFrameTitle: "B 站播放器",
+      douyinWatch: "抖音观看 ↗",
+      seasonOne: "第一季 ↗",
+      seasonTwo: "第二季 ↗"
     },
     en: {
       navFilm: "Films",
@@ -42,7 +45,10 @@
       comingSoon: "Coming soon",
       videoClose: "Close player",
       videoWatch: "Watch on Bilibili ↗",
-      videoFrameTitle: "Bilibili player"
+      videoFrameTitle: "Bilibili player",
+      douyinWatch: "Watch on Douyin ↗",
+      seasonOne: "Season 1 ↗",
+      seasonTwo: "Season 2 ↗"
     }
   };
 
@@ -177,6 +183,7 @@
   const workDestination = (work) => {
     if (work.category === "interactive") return work.play_url || "";
     if (work.category === "ip") return "";
+    if (work.category === "series") return work.link_cn || "";
     return (language === "en" ? work.link_global : work.link_cn) || "";
   };
 
@@ -193,6 +200,7 @@
     const article = createElement("article", `${cardClass} reveal`);
     const hasVideo = hasBilibiliVideo(work);
     const destination = hasVideo ? "" : workDestination(work);
+    const hasDouyinLink = work.category === "series" && Boolean(destination);
     const link = createElement(destination ? "a" : "button", "work-link");
     const isIpInDevelopment = work.category === "ip";
     const title = isIpInDevelopment ? currentCopy.ipStatusTitle : localize(work.title);
@@ -202,6 +210,8 @@
     const highlight = isIpInDevelopment ? currentCopy.ipStatusTagline : localize(work.highlight);
 
     article.style.setProperty("--orb-offset", `${-10 + (index % 4) * 3}%`);
+    article.dataset.workId = work.id;
+    if (hasDouyinLink) article.classList.add("has-watch-link");
     if (hasVideo) {
       link.type = "button";
       link.setAttribute("aria-haspopup", "dialog");
@@ -233,6 +243,11 @@
       playIndicator.setAttribute("aria-hidden", "true");
       playIndicator.innerHTML = '<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="29"/><path d="m27 22 16 10-16 10z"/></svg>';
       visual.append(playIndicator);
+    }
+    if (hasDouyinLink) {
+      const watchBadge = createElement("span", "series-watch-badge", currentCopy.douyinWatch);
+      watchBadge.setAttribute("aria-hidden", "true");
+      visual.append(watchBadge);
     }
     visual.append(createElement("span", "work-ghost-title", title));
 
@@ -272,6 +287,21 @@
     }
     link.append(visual, meta);
     article.append(link);
+    if (hasDouyinLink && work.link_cn_2) {
+      const seasonLinks = createElement("nav", "series-season-links");
+      seasonLinks.setAttribute("aria-label", title);
+      [
+        [currentCopy.seasonOne, work.link_cn],
+        [currentCopy.seasonTwo, work.link_cn_2]
+      ].forEach(([label, href]) => {
+        const seasonLink = createElement("a", "series-season-link", label);
+        seasonLink.href = href;
+        seasonLink.target = "_blank";
+        seasonLink.rel = "noopener noreferrer";
+        seasonLinks.append(seasonLink);
+      });
+      article.append(seasonLinks);
+    }
     return article;
   };
 

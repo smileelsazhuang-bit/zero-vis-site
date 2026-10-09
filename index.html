@@ -29,6 +29,26 @@
   <link rel="alternate" hreflang="zh-CN" href="https://zero-vis.cn/">
   <link rel="alternate" hreflang="en" href="https://zero-vis.cn/?lang=en">
   <link rel="alternate" hreflang="x-default" href="https://zero-vis.cn/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://zero-vis.cn/#person",
+          "name": "莊微 Elsa",
+          "email": "\u0034\u0032\u0039\u0035\u0039\u0036\u0034\u0033\u0033\u0040\u0071\u0071\u002e\u0063\u006f\u006d",
+          "worksFor": { "@id": "https://zero-vis.cn/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://zero-vis.cn/#organization",
+          "name": "一灵视界（深圳）文化科技有限公司",
+          "address": "深圳市龙岗区"
+        }
+      ]
+    }
+  </script>
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
@@ -133,7 +153,100 @@
           <h2 data-copy="navContact">合作</h2>
         </div>
         <p class="contact-copy" data-copy="contact">寻找制片、发行、IP 开发与联名的伙伴。</p>
-        <div class="contact-social">
+
+        <section class="studio-profile" aria-labelledby="studio-profile-heading">
+          <h3 class="studio-profile__label" id="studio-profile-heading" data-copy="studioLabel">一灵视界 · 公司</h3>
+          <p class="studio-profile__intro" data-copy="studioIntro">一灵视界（深圳）文化科技有限公司是一家入驻深圳龙岗风行OPC-AIGC产业园的OPC-AIGC内容公司，以“一人核心+AI工作流+项目制协作”模式，专注AIGC影视化、展馆数字化与AI工业化生产。</p>
+          <blockquote class="studio-profile__quote" data-copy="studioQuote">从创意到成片，从空间到屏幕，从IP到爆款。</blockquote>
+          <p class="studio-profile__services-label" data-copy="studioServicesLead">核心业务包括</p>
+          <div class="studio-services">
+            <article class="studio-service">
+              <h4 data-copy="studioServiceContentTitle">AIGC 内容制作</h4>
+              <p data-copy="studioServiceContent">AIGC漫剧、短剧、AI电影、AIMV、广告宣传片、数字人及互动内容的策划、生成与全流程制作；</p>
+            </article>
+            <article class="studio-service">
+              <h4 data-copy="studioServiceWorkflowTitle">AIGC 工作流</h4>
+              <p data-copy="studioServiceWorkflow">AIGC内容工作台与创作工作流搭建、迭代和咨询；</p>
+            </article>
+            <article class="studio-service">
+              <h4 data-copy="studioServiceExhibitionTitle">展馆与文旅多媒体</h4>
+              <p data-copy="studioServiceExhibition">城市展馆、企业展厅、文旅项目、光影秀的多媒体策划设计与影片制作。</p>
+            </article>
+          </div>
+          <p class="studio-profile__closing" data-copy="studioClosing">公司以“叙事”与“体验”为内核，坚持用AI放大想象力，面向城市、企业、平台与IP方提供从策划、设计、制作到AIGC工作流落地的全流程服务，做“一人成片”时代的OPC内容探路者。</p>
+        </section>
+
+        <div class="contact-panel">
+          <div class="contact-card">
+            <dl class="contact-details">
+              <div class="contact-detail">
+                <svg class="contact-detail__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="12" cy="8" r="3.5"></circle>
+                  <path d="M5 20c.6-4.2 3-6.3 7-6.3s6.4 2.1 7 6.3"></path>
+                </svg>
+                <dt data-copy="contactNameLabel">称呼</dt>
+                <dd data-copy="contactName">莊微 Elsa</dd>
+              </div>
+              <div class="contact-detail">
+                <svg class="contact-detail__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                <dt data-copy="contactEmailLabel">邮箱</dt>
+                <dd class="contact-email-row">
+                  <a class="contact-email" data-contact-email><noscript>请开启 JavaScript 查看联系方式</noscript></a>
+                  <button class="contact-copy-button" type="button" data-contact-copy data-copy="contactCopy">复制</button>
+                  <span class="visually-hidden" role="status" aria-live="polite" aria-atomic="true" data-contact-status></span>
+                </dd>
+              </div>
+            </dl>
+            <div class="contact-social">
+              <a class="social-link" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer">
+                <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="m8 4 2.5 3M16 4l-2.5 3M8 12v2M16 12v2"></path>
+                  <rect x="3" y="7" width="18" height="13" rx="3"></rect>
+                </svg>
+                <span data-copy="socialBilibili">B站</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-qr-gallery" data-copy-aria="contactQrLabel" aria-label="联系方式二维码">
+            <div class="contact-qr-grid">
+              <figure class="qr-card">
+                <button class="qr-card__button" type="button" data-qr-open data-copy-aria="qrWechatOpen" aria-label="放大微信二维码">
+                  <img src="assets/contact/qr-wechat.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrWechatAlt" alt="微信二维码：莊微 Elsa">
+                </button>
+                <figcaption data-copy="qrWechatCaption">微信二维码：莊微 Elsa</figcaption>
+              </figure>
+              <figure class="qr-card">
+                <button class="qr-card__button" type="button" data-qr-open data-copy-aria="qrDouyinOpen" aria-label="放大抖音二维码">
+                  <img src="assets/contact/qr-douyin.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrDouyinAlt" alt="抖音二维码：@零的漫剧">
+                </button>
+                <figcaption data-copy="qrDouyinCaption">抖音二维码：@零的漫剧</figcaption>
+              </figure>
+              <figure class="qr-card">
+                <button class="qr-card__button" type="button" data-qr-open data-copy-aria="qrXiaohongshuOpen" aria-label="放大小红书二维码">
+                  <img src="assets/contact/qr-xiaohongshu.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrXiaohongshuAlt" alt="小红书二维码：宇宙手记">
+                </button>
+                <figcaption data-copy="qrXiaohongshuCaption">小红书二维码：宇宙手记</figcaption>
+                <a class="qr-card__external" href="http://xhslink.com/m/3l87aFSEEzP" target="_blank" rel="noopener noreferrer" data-copy="qrXiaohongshuLink">打开小红书 ↗</a>
+              </figure>
+              <figure class="qr-card">
+                <button class="qr-card__button" type="button" data-qr-open data-copy-aria="qrBilibiliOpen" aria-label="放大 B 站二维码">
+                  <img src="assets/contact/qr-bilibili.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrBilibiliAlt" alt="B 站二维码：莊女士啊">
+                </button>
+                <figcaption data-copy="qrBilibiliCaption">B 站二维码：莊女士啊</figcaption>
+                <a class="qr-card__external" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer" data-copy="qrBilibiliLink">打开 B 站 ↗</a>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="site-footer">
+        <span class="footer-brand"><img src="assets/brand/mark.svg" alt="" width="20" height="20"><span>莊女士</span></span>
+        <nav class="footer-links" data-copy-aria="footerLinksLabel" aria-label="社交与邮箱链接">
           <a class="social-link" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer">
             <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="m8 4 2.5 3M16 4l-2.5 3M8 12v2M16 12v2"></path>
@@ -141,19 +254,14 @@
             </svg>
             <span data-copy="socialBilibili">B站</span>
           </a>
-        </div>
-        <p class="contact-placeholder" data-copy="contactPlaceholder" hidden>【待补充：对外公开用哪个邮箱/微信】</p>
-      </div>
-
-      <footer class="site-footer">
-        <span class="footer-brand"><img src="assets/brand/mark.svg" alt="" width="20" height="20"><span>莊女士</span></span>
-        <a class="social-link" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer">
-          <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="m8 4 2.5 3M16 4l-2.5 3M8 12v2M16 12v2"></path>
-            <rect x="3" y="7" width="18" height="13" rx="3"></rect>
-          </svg>
-          <span data-copy="socialBilibili">B站</span>
-        </a>
+          <a class="social-link" data-contact-email-footer>
+            <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+              <path d="m4 7 8 6 8-6"></path>
+            </svg>
+            <span data-copy="socialEmail">邮箱</span>
+          </a>
+        </nav>
         <span class="icp-record" data-copy="icp" hidden>【待补充：备案号】</span>
       </footer>
     </section>
@@ -169,6 +277,46 @@
         <h2 id="video-modal-title" data-video-title></h2>
         <a data-video-link target="_blank" rel="noopener noreferrer" data-copy="videoWatch">在 B 站观看 ↗</a>
       </footer>
+    </div>
+  </dialog>
+
+  <dialog class="douyin-modal" data-douyin-modal aria-labelledby="douyin-modal-title">
+    <div class="douyin-modal__shell">
+      <button class="douyin-modal__close" type="button" data-douyin-close aria-label="关闭观看方式">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+      <header class="douyin-modal__header">
+        <img class="douyin-modal__poster" data-douyin-cover alt="">
+        <div>
+          <p class="douyin-modal__eyebrow" data-copy="douyinPanelLabel">观看方式</p>
+          <h2 id="douyin-modal-title" data-douyin-title></h2>
+        </div>
+      </header>
+      <p class="douyin-modal__wechat-tip" data-douyin-wechat-tip hidden></p>
+      <div class="douyin-modal__content">
+        <figure class="douyin-modal__qr">
+          <img data-douyin-qr alt="">
+          <figcaption data-douyin-qr-label></figcaption>
+        </figure>
+        <div class="douyin-modal__actions">
+          <a class="douyin-modal__open" data-douyin-open target="_blank" rel="noopener noreferrer"></a>
+          <button class="douyin-modal__copy" type="button" data-douyin-copy></button>
+          <textarea class="douyin-modal__copy-value" data-douyin-copy-value readonly rows="2"></textarea>
+          <p class="douyin-modal__status" data-douyin-status role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="qr-modal" data-qr-modal aria-labelledby="qr-modal-caption">
+    <div class="qr-modal__shell">
+      <button class="qr-modal__close" type="button" data-qr-close data-copy-aria="qrClose" aria-label="关闭二维码">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
+      </button>
+      <figure class="qr-modal__figure">
+        <img data-qr-modal-image alt="">
+        <figcaption id="qr-modal-caption" data-qr-modal-caption></figcaption>
+      </figure>
     </div>
   </dialog>
 

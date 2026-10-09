@@ -473,18 +473,20 @@ html[lang="en"] .character-card__quote {
 .scene-script {
   max-width: 62rem;
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 4rem);
   display: grid;
-  gap: 1px;
-  border: 1px solid rgba(246, 234, 216, 0.14);
-  background: rgba(246, 234, 216, 0.12);
+  border: 1px solid rgba(242, 184, 75, 0.26);
+  background: transparent;
 }
 
 .scene-line {
   --scene-accent: var(--gold);
   margin: 0;
   padding: clamp(1.15rem, 2.3vw, 2rem);
-  background: rgba(5, 5, 5, 0.92);
+  background: rgba(5, 5, 5, 0.54);
+}
+
+.scene-line + .scene-line {
+  border-top: 1px solid rgba(246, 234, 216, 0.07);
 }
 
 .scene-line--gutuan {
@@ -498,7 +500,7 @@ html[lang="en"] .character-card__quote {
 
 .scene-line__cue {
   color: var(--paper-muted);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -509,7 +511,7 @@ html[lang="en"] .character-card__quote {
 }
 
 .scene-line__action {
-  color: rgba(242, 237, 227, 0.5);
+  color: rgba(242, 237, 227, 0.74);
 }
 
 .scene-line__dialogue {
@@ -524,9 +526,9 @@ html[lang="en"] .character-card__quote {
 .scene-line--direction {
   padding-left: clamp(2rem, 8vw, 8rem);
   padding-right: clamp(2rem, 8vw, 8rem);
-  color: rgba(246, 234, 216, 0.56);
+  color: rgba(246, 234, 216, 0.74);
   font-family: var(--serif-zh);
-  font-size: 0.86rem;
+  font-size: 0.875rem;
   font-style: italic;
   line-height: 1.85;
   text-align: center;
@@ -933,12 +935,13 @@ html[lang="en"] .character-card__quote {
     gap: 0.55rem;
   }
 
-  .scene-script {
-    padding: 1px;
-  }
-
   .scene-line {
     padding: 1.15rem;
+  }
+
+  .scene-line__cue,
+  .scene-line--direction {
+    font-size: 0.8125rem;
   }
 
   .scene-line--direction {

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>晴雨电台</title>
+  <meta name="title" content="晴雨电台">
+  <meta name="description" content="你播报什么天气，明天就会下什么天气。一个 15 分钟的小镇解谜故事。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="晴雨电台">
+  <meta property="og:description" content="你播报什么天气，明天就会下什么天气。一个 15 分钟的小镇解谜故事。">
+  <meta property="og:image" content="og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <div id="town-stage" class="town-stage" aria-hidden="true">
+      <div id="town-sky"></div>
+      <svg id="town-stars"></svg>
+      <div id="town-world"><svg id="town" viewBox="0 0 1180 860"></svg></div>
+      <div id="town-fog"></div>
+      <canvas id="town-fx"></canvas>
+      <div class="town-vignette"></div>
+      <svg class="town-grain"><filter id="town-grain-filter"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#town-grain-filter)"/></svg>
+    </div>
+
+    <div id="brand" class="brand" aria-hidden="true">
+      <span class="brand-dot"></span>
+      <div><b id="brand-title"></b><small><span id="brand-frequency"></span><span aria-hidden="true"> · </span><span id="brand-status"></span></small></div>
+    </div>
+
+    <button id="sound-toggle" class="round-tool sound-toggle" type="button" aria-expanded="false" aria-controls="audio-settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path class="speaker-body" d="M4 9h4l5-4v14l-5-4H4z"></path>
+        <path class="speaker-wave" d="M16 8c1.4 1.1 1.4 6.9 0 8M19 5c3.5 3.3 3.5 10.7 0 14"></path>
+        <path class="speaker-slash" d="M4 4l16 16"></path>
+      </svg>
+    </button>
+    <aside id="audio-settings" class="audio-settings" hidden>
+      <div class="audio-setting">
+        <button id="music-toggle" class="audio-setting-toggle" type="button">
+          <span id="music-label" class="audio-setting-label"></span>
+          <span id="music-state" class="audio-setting-state"></span>
+          <i class="audio-switch" aria-hidden="true"></i>
+        </button>
+        <div class="audio-volume-row">
+          <input id="music-volume" class="audio-volume" type="range" min="0" max="100" step="1" value="50" aria-labelledby="music-label">
+        </div>
+      </div>
+      <div class="audio-setting">
+        <button id="voice-toggle" class="audio-setting-toggle" type="button">
+          <span id="voice-label" class="audio-setting-label"></span>
+          <span id="voice-state" class="audio-setting-state"></span>
+          <i class="audio-switch" aria-hidden="true"></i>
+        </button>
+        <div class="audio-volume-row">
+          <input id="voice-volume" class="audio-volume" type="range" min="0" max="100" step="1" value="100" aria-labelledby="voice-label">
+        </div>
+      </div>
+    </aside>
+
+    <section id="title-screen" class="screen title-screen is-active">
+      <div class="title-copy">
+        <p id="title-frequency" class="frequency"></p>
+        <h1 id="game-title"></h1>
+        <p id="game-subtitle" class="subtitle"></p>
+        <div id="title-lines" class="title-lines"></div>
+        <div id="title-actions" class="title-actions"></div>
+      </div>
+    </section>
+
+    <section id="chapter-screen" class="screen chapter-screen" hidden>
+      <div class="chapter-shade"></div>
+      <div class="chapter-copy">
+        <p id="chapter-title" class="chapter-title"></p>
+        <h2 id="chapter-subtitle"></h2>
+        <div id="chapter-lines" class="chapter-lines"></div>
+        <button id="chapter-continue" class="text-button" type="button"></button>
+      </div>
+    </section>
+
+    <main id="game-screen" class="screen game-screen" hidden>
+      <header class="game-header">
+        <p id="chapter-chip" class="chapter-chip"></p>
+        <h2 id="night-title"></h2>
+        <div id="progress-dots" class="progress-dots" aria-hidden="true"></div>
+      </header>
+
+      <button id="letter-toggle" class="letter-toggle" type="button" hidden>
+        <svg viewBox="0 0 48 36" aria-hidden="true"><path d="M3 4h42v28H3z"/><path d="M3 5l21 17L45 5M3 31l15-14M45 31L30 17"/></svg>
+      </button>
+
+      <article id="letter-card" class="letter-card" tabindex="0">
+        <span class="letter-tape" aria-hidden="true"></span>
+        <p id="letter-from" class="letter-from"></p>
+        <p id="letter-text" class="letter-text"></p>
+        <span class="letter-stamp" aria-hidden="true"><i></i><i></i><i></i></span>
+      </article>
+
+      <section id="finale-clues" class="finale-clues" hidden aria-labelledby="finale-goal">
+        <p id="finale-goal" class="finale-goal"></p>
+        <div id="finale-photos" class="finale-photos" role="list" aria-live="polite"></div>
+      </section>
+
+      <div id="finale-photo-viewer" class="finale-photo-viewer" role="dialog" aria-modal="true" aria-labelledby="finale-photo-viewer-goal" hidden>
+        <button id="finale-photo-viewer-backdrop" class="finale-photo-viewer-backdrop" type="button"></button>
+        <div class="finale-photo-viewer-paper">
+          <p id="finale-photo-viewer-goal" class="finale-photo-viewer-goal"></p>
+          <div class="finale-photo-viewer-stage">
+            <button id="finale-photo-viewer-prev" class="finale-photo-viewer-nav is-prev" type="button">
+              <svg viewBox="0 0 32 54" aria-hidden="true"><path d="M25 5L7 27l18 22"/></svg>
+            </button>
+            <div id="finale-photo-viewer-card" class="finale-photo-viewer-card"></div>
+            <button id="finale-photo-viewer-next" class="finale-photo-viewer-nav is-next" type="button">
+              <svg viewBox="0 0 32 54" aria-hidden="true"><path d="M7 5l18 22L7 49"/></svg>
+            </button>
+          </div>
+          <button id="finale-photo-viewer-close" class="finale-photo-viewer-close" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <button id="drawer-button" class="drawer-handle" type="button" aria-expanded="false">
+        <span class="drawer-letter-stack" aria-hidden="true">
+          <i class="letter-sheet"></i>
+          <i class="letter-sheet"></i>
+          <i class="letter-sheet"></i>
+          <svg viewBox="0 0 44 32">
+            <path d="M4 6h36v22H4z"/>
+            <path d="M5 8l17 13L39 8M5 27l12-10M39 27L27 17"/>
+          </svg>
+        </span>
+        <span id="drawer-label" class="tool-label"></span>
+      </button>
+      <aside id="clue-drawer" class="clue-drawer" hidden>
+        <div id="booth-items" class="booth-items"></div>
+      </aside>
+
+      <button id="hint-button" class="lamp-button" type="button">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M18 28h28L39 10H25z"/><path d="M31 28v21M21 53h22"/><circle cx="32" cy="28" r="6"/></svg>
+        <span id="hint-label" class="tool-label"></span>
+      </button>
+      <div id="hint-panel" class="hint-panel" hidden></div>
+
+      <div id="weather-card-tooltip" class="weather-card-tooltip" role="tooltip" hidden></div>
+
+      <p id="scene-description" class="scene-description"></p>
+
+      <div id="feedback-panel" class="feedback-panel" hidden aria-live="polite">
+        <div id="feedback-lines" class="feedback-lines"></div>
+        <button id="feedback-action" class="text-button feedback-action" type="button" hidden></button>
+      </div>
+
+      <div id="guide-tip" class="guide-tip" role="status" hidden></div>
+
+      <section class="console-panel">
+        <div id="weather-cards" class="weather-cards"></div>
+        <div id="timeline" class="timeline"></div>
+        <div class="console-actions">
+          <button id="clear-button" class="console-reset" type="button">
+            <svg viewBox="0 0 34 24" aria-hidden="true"><path d="M28 5L18 12l10 7V5zM17 5L7 12l10 7V5zM5 4v16"/></svg>
+            <span id="clear-label"></span>
+          </button>
+          <button id="broadcast-button" class="broadcast-button" type="button"><span id="broadcast-label"></span><small id="broadcast-status"></small></button>
+        </div>
+      </section>
+
+      <button id="radio-button" class="radio-button" type="button">
+        <span class="radio-speaker" aria-hidden="true"></span>
+        <span id="radio-display" class="radio-display"></span>
+        <span class="radio-knob" aria-hidden="true"></span>
+      </button>
+    </main>
+
+    <section id="ending-screen" class="screen ending-screen" hidden>
+      <svg id="ending-svg" class="legacy-ending-art" hidden></svg>
+      <canvas id="ending-canvas" class="legacy-ending-art" hidden></canvas>
+      <div id="ending-lines" class="ending-lines" aria-live="polite"></div>
+      <div id="credits" class="credits" hidden></div>
+      <div class="ending-actions">
+        <button id="ending-share" class="text-button" type="button" hidden></button>
+        <button id="ending-restart" class="text-button" type="button" hidden></button>
+      </div>
+    </section>
+
+    <section id="share-screen" class="screen share-screen" hidden>
+      <button id="share-close" class="share-close" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+      <div class="share-layout">
+        <div class="share-editor">
+          <h2 id="share-title"></h2>
+          <input id="share-name" class="share-name" maxlength="16" autocomplete="off">
+          <p id="share-choose" class="share-choose"></p>
+          <div id="share-cards" class="share-cards"></div>
+          <div id="share-sequence" class="share-sequence"></div>
+          <button id="share-generate" class="broadcast-button share-generate" type="button"><span></span><small id="share-status"></small></button>
+        </div>
+        <div id="poster-wrap" class="poster-wrap" hidden>
+          <img id="poster-preview" class="poster-preview" alt="">
+          <div class="poster-actions">
+            <button id="poster-save" class="text-button" type="button"></button>
+            <button id="poster-again" class="text-button" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" hidden>
+      <button id="modal-backdrop" class="modal-backdrop" type="button"></button>
+      <article class="modal-paper">
+        <span class="letter-tape" aria-hidden="true"></span>
+        <button id="modal-close" class="modal-close" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+        <div id="modal-visual" class="modal-visual" hidden></div>
+        <h3 id="modal-title"></h3>
+        <p id="modal-text"></p>
+        <button id="modal-continue" class="text-button modal-continue" type="button" hidden></button>
+      </article>
+    </div>
+  </div>
+
+  <script src="story.js"></script>
+  <script src="simulator.js"></script>
+  <script src="town.js"></script>
+  <script src="poster.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

@@ -170,12 +170,12 @@ window.PORTFOLIO_DATA = {
         "en": "Rain or Shine Radio"
       },
       "highlight": {
-        "zh": "剧情解谜网页游戏 ｜ 开发中",
-        "en": "Story puzzle web game | In development"
+        "zh": "剧情解谜网页游戏 ｜ 可试玩",
+        "en": "Story puzzle web game | Play now"
       },
       "year": "2026",
-      "cover": "",
-      "play_url": ""
+      "cover": "assets/covers/qingyu-radio.jpg",
+      "play_url": "games/qingyu-radio/index.html"
     },
     {
       "id": "touqi",

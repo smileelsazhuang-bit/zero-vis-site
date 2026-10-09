@@ -642,6 +642,9 @@
       if (hasAwardHighlight(work.highlight?.zh || "")) highlightNode.append(createLaurelIcon());
       highlightNode.append(document.createTextNode(highlight));
       meta.append(titleGroup, highlightNode);
+      if (work.category === "ip" && work.summary) {
+        meta.append(createElement("p", "work-summary", localize(work.summary)));
+      }
     }
     link.append(visual, meta);
     article.append(link);

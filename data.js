@@ -241,6 +241,10 @@ window.PORTFOLIO_DATA = {
         "zh": "原创 IP ｜ 原创绘本《今天也有小魔法》",
         "en": "Original IP | Picture book *Today, a Little Magic*"
       },
+      "summary": {
+        "zh": "灯绒常先看见可能，菇团常先动手试试。",
+        "en": "Dengrong is often the first to spot a possibility; Gutuan is often the first to try it."
+      },
       "year": "2026",
       "cover": "assets/covers/dengrong-gutuan.jpg",
       "ip_page": "ip.html?id=dengrong-gutuan"

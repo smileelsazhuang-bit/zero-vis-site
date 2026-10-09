@@ -17,6 +17,10 @@
       visual: "视觉风格",
       palette: "色板",
       keyframes: "关键帧",
+      likes: "喜欢",
+      magic: "魔法",
+      magicRule: "魔法规则",
+      everydayScene: "日常小片段",
       pictureBook: "原创绘本",
       viewImage: "全屏查看",
       closeImage: "关闭大图",
@@ -30,6 +34,10 @@
       visual: "Visual Style",
       palette: "Palette",
       keyframes: "Keyframes",
+      likes: "Likes",
+      magic: "Magic",
+      magicRule: "Magic Rule",
+      everydayScene: "Everyday Scene",
       pictureBook: "Picture Book",
       viewImage: "View fullscreen",
       closeImage: "Close image",
@@ -140,14 +148,35 @@
   characterGrid?.replaceChildren();
   (Array.isArray(ip.characters) ? ip.characters : []).forEach((character) => {
     const name = localize(character.name);
+    const title = localize(character.title);
     const quote = localize(character.quote);
     const description = localize(character.description);
-    const article = createElement("article", "character-card reveal");
+    const article = createElement("article", `character-card character-card--${character.id} reveal`);
     const body = createElement("div", "character-card__body");
+    const details = createElement("dl", "character-card__details");
+    const likesRow = createElement("div", "character-card__detail");
+    likesRow.append(
+      createElement("dt", "character-card__detail-label", currentLabels.likes),
+      createElement("dd", "character-card__detail-copy", localize(character.likes))
+    );
+    const magicRow = createElement("div", "character-card__detail character-card__detail--magic");
+    const magicCopy = createElement("dd", "character-card__detail-copy");
+    magicCopy.append(
+      createElement("strong", "character-card__magic-name", localize(character.magic?.name)),
+      document.createTextNode(language === "en" ? ": " : "："),
+      createElement("span", "character-card__magic-description", localize(character.magic?.description))
+    );
+    magicRow.append(
+      createElement("dt", "character-card__detail-label", currentLabels.magic),
+      magicCopy
+    );
+    details.append(likesRow, magicRow);
     body.append(
       createElement("h3", "character-card__name", name),
+      createElement("p", "character-card__title", title),
       createElement("blockquote", "character-card__quote", `“${quote}”`),
-      createElement("p", "character-card__description", description)
+      createElement("p", "character-card__description", description),
+      details
     );
     article.append(
       makeMediaFrame(character.image, name, "character-card__media"),
@@ -155,6 +184,59 @@
     );
     characterGrid?.append(article);
   });
+
+  const bondTitleNode = document.querySelector("[data-bond-title]");
+  const bondDescriptionNode = document.querySelector("[data-bond-description]");
+  const bondRitualNode = document.querySelector("[data-bond-ritual]");
+  const bondRuleNode = document.querySelector("[data-bond-rule]");
+  if (bondTitleNode) bondTitleNode.textContent = localize(ip.bond?.title);
+  if (bondDescriptionNode) bondDescriptionNode.textContent = localize(ip.bond?.description);
+  if (bondRitualNode) bondRitualNode.textContent = `“${localize(ip.bond?.small_ritual)}”`;
+  if (bondRuleNode) bondRuleNode.textContent = localize(ip.bond?.magic_rule);
+
+  const sceneTitleNode = document.querySelector("[data-scene-title]");
+  const sceneLinesNode = document.querySelector("[data-scene-lines]");
+  if (sceneTitleNode) sceneTitleNode.textContent = localize(ip.scene?.title);
+  sceneLinesNode?.replaceChildren();
+  (Array.isArray(ip.scene?.lines) ? ip.scene.lines : []).forEach((line) => {
+    if (line.direction) {
+      const directionText = localize(line.direction);
+      const direction = createElement(
+        "p",
+        "scene-line scene-line--direction",
+        language === "en" ? `(${directionText})` : `（${directionText}）`
+      );
+      sceneLinesNode?.append(direction);
+      return;
+    }
+
+    const row = createElement("div", `scene-line scene-line--${line.role || "dialogue"}`);
+    const cue = createElement("p", "scene-line__cue");
+    const speaker = createElement("span", "scene-line__speaker", localize(line.speaker));
+    cue.append(speaker);
+    const actionText = localize(line.action);
+    if (actionText) {
+      cue.append(createElement(
+        "span",
+        "scene-line__action",
+        language === "en" ? `, ${actionText}` : actionText
+      ));
+    }
+    cue.append(document.createTextNode(language === "en" ? ":" : "："));
+    const dialogueText = localize(line.dialogue);
+    row.append(
+      cue,
+      createElement(
+        "p",
+        "scene-line__dialogue",
+        language === "en" ? `“${dialogueText}”` : `「${dialogueText}」`
+      )
+    );
+    sceneLinesNode?.append(row);
+  });
+
+  const designTitleNode = document.querySelector("[data-design-title]");
+  if (designTitleNode) designTitleNode.textContent = localize(ip.design_sheets?.title);
 
   const palette = document.querySelector("[data-palette]");
   palette?.replaceChildren();
@@ -171,6 +253,9 @@
     palette?.append(item);
   });
 
+  const designSheets = Array.isArray(ip.design_sheets?.items) ? ip.design_sheets.items : [];
+  const designSheetGrid = document.querySelector("[data-design-sheet-grid]");
+  designSheetGrid?.replaceChildren();
   const keyframes = Array.isArray(ip.visual_style?.keyframes) ? ip.visual_style.keyframes : [];
   const keyframeGrid = document.querySelector("[data-keyframe-grid]");
   keyframeGrid?.replaceChildren();
@@ -182,21 +267,22 @@
   const lightboxClose = document.querySelector("[data-lightbox-close]");
   const lightboxPrevious = document.querySelector("[data-lightbox-prev]");
   const lightboxNext = document.querySelector("[data-lightbox-next]");
+  let activeFrames = [];
   let activeFrameIndex = 0;
   let activeFrameTrigger = null;
 
   const renderLightbox = () => {
-    const frame = keyframes[activeFrameIndex];
+    const frame = activeFrames[activeFrameIndex];
     if (!frame || !lightboxMedia) return;
-    const caption = localize(frame.caption);
+    const caption = localize(frame.caption || frame.name);
     lightboxMedia.replaceChildren();
     addImage(lightboxMedia, frame.image, caption);
     if (lightboxCaption) lightboxCaption.textContent = caption;
-    if (lightboxCount) lightboxCount.textContent = `${activeFrameIndex + 1} / ${keyframes.length}`;
+    if (lightboxCount) lightboxCount.textContent = `${activeFrameIndex + 1} / ${activeFrames.length}`;
   };
   const stepLightbox = (direction) => {
-    if (!keyframes.length) return;
-    activeFrameIndex = (activeFrameIndex + direction + keyframes.length) % keyframes.length;
+    if (!activeFrames.length) return;
+    activeFrameIndex = (activeFrameIndex + direction + activeFrames.length) % activeFrames.length;
     renderLightbox();
   };
   const clearLightbox = () => {
@@ -214,8 +300,9 @@
       clearLightbox();
     }
   };
-  const openLightbox = (index, trigger) => {
-    if (!lightbox || !keyframes.length) return;
+  const openLightbox = (frames, index, trigger) => {
+    if (!lightbox || !frames.length) return;
+    activeFrames = frames;
     activeFrameIndex = index;
     activeFrameTrigger = trigger;
     renderLightbox();
@@ -246,6 +333,18 @@
     }
   });
 
+  designSheets.forEach((sheet, index) => {
+    const caption = localize(sheet.name);
+    const figure = createElement("figure", "design-sheet reveal");
+    const button = createElement("button", "design-sheet__button");
+    button.type = "button";
+    button.setAttribute("aria-label", `${currentLabels.viewImage}: ${caption}`);
+    button.append(makeMediaFrame(sheet.image, caption, "design-sheet__media"));
+    button.addEventListener("click", () => openLightbox(designSheets, index, button));
+    figure.append(button, createElement("figcaption", "design-sheet__caption", caption));
+    designSheetGrid?.append(figure);
+  });
+
   keyframes.forEach((frame, index) => {
     const caption = localize(frame.caption);
     const figure = createElement("figure", "keyframe reveal");
@@ -253,7 +352,7 @@
     button.type = "button";
     button.setAttribute("aria-label", `${currentLabels.viewImage}: ${caption}`);
     button.append(makeMediaFrame(frame.image, caption, "keyframe__media"));
-    button.addEventListener("click", () => openLightbox(index, button));
+    button.addEventListener("click", () => openLightbox(keyframes, index, button));
     figure.append(button, createElement("figcaption", "keyframe__caption", caption));
     keyframeGrid?.append(figure);
   });

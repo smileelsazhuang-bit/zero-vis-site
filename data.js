@@ -223,12 +223,12 @@ window.PORTFOLIO_DATA = {
         "en": "Paper Lantern"
       },
       "highlight": {
-        "zh": "互动叙事 AVG ｜ 即将上线",
-        "en": "Interactive narrative AVG | Coming soon"
+        "zh": "互动叙事 AVG ｜ 可试玩",
+        "en": "Interactive narrative AVG | Play now"
       },
       "year": "2026",
-      "cover": "",
-      "play_url": ""
+      "cover": "assets/covers/zhideng.jpg",
+      "play_url": "games/zhideng/index.html"
     },
     {
       "id": "ip-main",

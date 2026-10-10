@@ -1,0 +1,28 @@
+{
+  "_phaser-Jt__PiWe.js": {
+    "file": "assets/phaser-Jt__PiWe.js",
+    "name": "phaser"
+  },
+  "_story-content-BQo2v8pz.js": {
+    "file": "assets/story-content-BQo2v8pz.js",
+    "name": "story-content"
+  },
+  "_validation-cFkovD_R.js": {
+    "file": "assets/validation-cFkovD_R.js",
+    "name": "validation"
+  },
+  "index.html": {
+    "file": "assets/index-DyILDqfK.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_phaser-Jt__PiWe.js",
+      "_story-content-BQo2v8pz.js",
+      "_validation-cFkovD_R.js"
+    ],
+    "css": [
+      "assets/index-Deo56iHf.css"
+    ]
+  }
+}

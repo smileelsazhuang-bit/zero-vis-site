@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+  <script src="ios-audio-unlock.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#050607" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3C/svg%3E"
+    />
+    <title>纸灯</title>
+    <style>
+      /* Critical shell: visible before the Phaser engine has downloaded, then
+         naturally covered by its opaque canvas at the same 16:9 bounds. */
+      html,
+      body,
+      #app {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: #050607;
+      }
+
+      #app {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      #initial-loading {
+        grid-area: 1 / 1;
+        display: grid;
+        width: min(100vw, calc(100vh * 16 / 9));
+        height: min(100vh, calc(100vw * 9 / 16));
+        place-items: center;
+        color: #d8cfb8;
+        font-family: 'Noto Serif SC', 'Microsoft YaHei', serif;
+        letter-spacing: 0.22em;
+        background: #050607;
+      }
+
+      #initial-loading h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 5vw, 3.5rem);
+        font-weight: 500;
+      }
+
+      #app canvas {
+        z-index: 1;
+        grid-area: 1 / 1;
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-DyILDqfK.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/phaser-Jt__PiWe.js">
+    <link rel="modulepreload" crossorigin href="./assets/story-content-BQo2v8pz.js">
+    <link rel="modulepreload" crossorigin href="./assets/validation-cFkovD_R.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-Deo56iHf.css">
+  </head>
+  <body>
+    <main id="app" aria-label="《纸灯》游戏画面">
+      <section id="initial-loading" aria-label="游戏正在加载">
+        <h1>纸灯</h1>
+      </section>
+    </main>
+  </body>
+</html>

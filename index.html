@@ -52,9 +52,11 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/covers/last-thought.jpg" as="image">
   <link rel="preload" href="assets/fonts/NotoSerifSC-Light-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="gallery.css">
   <script src="assets/js/ios-audio-unlock.js"></script>
   <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -77,56 +79,52 @@
   </header>
 
   <main id="content">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <img class="hero__poster" src="assets/hero-poster.jpg" width="1920" height="1080" fetchpriority="high" decoding="async" alt="">
-      <video class="hero__video hero__media" muted loop playsinline preload="metadata" poster="assets/hero-poster.jpg" aria-hidden="true"></video>
-      <div class="hero__shade" aria-hidden="true"></div>
-      <div class="hero__content hero__inner reveal">
-        <p class="hero__identity eyebrow" data-copy="heroSubtitle">莊女士 ｜ AIGC 导演 · 原创 IP 创作者</p>
-        <h1 class="hero__title" id="hero-title">
-          <span data-copy="heroTitleLine1">一个人，</span>
-          <span data-copy="heroTitleLine2">也可以把故事</span>
-          <span data-copy="heroTitleLine3">做成电影。</span>
-        </h1>
-        <p class="hero__en" data-copy="heroEnglish">One creator. Stories made into films.</p>
+    <!-- T28 首页 v4「空间画廊」：首屏是漂浮在暖光房间里的毛玻璃作品画廊（交互见 gallery.js） -->
+    <section class="room" id="top" aria-labelledby="hero-title" style="--accent:#d6b072">
+      <div class="room__bg" aria-hidden="true"><i></i><i></i></div>
+      <div class="room__light" aria-hidden="true"></div>
+
+      <div class="room__bar glass">
+        <a class="room__brand" href="#top" aria-label="莊女士"><img src="assets/brand/mark.svg" alt="" width="22" height="22"></a>
+        <div class="room__nav"><button class="gico" type="button" data-step="-1" aria-label="上一部">‹</button><button class="gico" type="button" data-step="1" aria-label="下一部">›</button></div>
+        <div class="room__tabs" role="tablist" aria-label="作品方向">
+          <button type="button" role="tab" data-cat="film" aria-selected="true" class="is-on" data-copy="navFilm">电影</button>
+          <button type="button" role="tab" data-cat="series" aria-selected="false" data-copy="navSeries">漫剧</button>
+          <button type="button" role="tab" data-cat="ip" aria-selected="false" data-copy="navOriginals">原创 IP</button>
+          <button type="button" role="tab" data-cat="game" aria-selected="false" data-copy="navGames">游戏</button>
+        </div>
+        <div class="room__addr" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>zero-vis.cn · <b data-room-addr>电影</b></span></div>
+        <div class="room__end"><a class="gico" href="?lang=en" data-room-lang>EN</a><a class="room__cta" href="#contact" data-copy="navContact">合作</a></div>
       </div>
 
-    <aside class="awards-strip" data-awards-strip aria-label="已有成绩">
-      <div class="awards-strip__track">
-        <ul class="awards-strip__group">
-          <li><svg class="laurel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>《解限 0.03%》入围 2026 北京国际电影节百度 AIGC 未来创作联赛</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>入围第二届阿那亚海浪电影节黑客松</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>AIMV《星河落在龙岗》瓦卡奖龙岗赛区二等奖</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>十余部 AIGC 漫剧；《病美人在无限游戏里撩 BOSS》悬疑类漫剧新剧榜一；《星际蛋仔王》抖音短剧未来榜 Top30</span></li>
-        </ul>
-        <ul class="awards-strip__group" aria-hidden="true">
-          <li><svg class="laurel-icon" viewBox="0 0 24 24"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>《解限 0.03%》入围 2026 北京国际电影节百度 AIGC 未来创作联赛</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>入围第二届阿那亚海浪电影节黑客松</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>AIMV《星河落在龙岗》瓦卡奖龙岗赛区二等奖</span></li>
-          <li><svg class="laurel-icon" viewBox="0 0 24 24"><path d="M8.2 20.2C4.6 17.6 3 13.8 4 9.8M15.8 20.2c3.6-2.6 5.2-6.4 4.2-10.4M5.1 13.5 2.8 12M6.5 16.7l-2.6-.5M7 10.3 5.1 8.2M18.9 13.5l2.3-1.5M17.5 16.7l2.6-.5M17 10.3l1.9-2.1M9.5 21.3h5"/></svg><span>十余部 AIGC 漫剧；《病美人在无限游戏里撩 BOSS》悬疑类漫剧新剧榜一；《星际蛋仔王》抖音短剧未来榜 Top30</span></li>
-        </ul>
+      <div class="room__tagline">
+        <p class="room__kicker" data-copy="heroSubtitle">莊女士 ｜ AIGC 导演 · 原创 IP 创作者</p>
+        <h1 id="hero-title" data-copy="heroTitle">一个人，也可以把故事做成电影。</h1>
       </div>
-    </aside>
+
+      <nav class="room__rail glass" aria-label="快捷入口">
+        <a href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer" title="B站" aria-label="B站"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 4 2.5 3M16 4l-2.5 3M8 12v2M16 12v2"/><rect x="3" y="7" width="18" height="13" rx="3"/></svg></a>
+        <a href="#originals" title="原创 IP" aria-label="原创 IP"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></a>
+        <a href="#about" title="关于 · 合作" aria-label="关于 · 合作"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+      </nav>
+
+      <div class="gallery" aria-roledescription="carousel" aria-label="作品画廊">
+        <div class="gallery__plinth" aria-hidden="true"></div>
+        <div class="gallery__track" data-gallery-track></div>
+      </div>
+
+      <div class="room__dock glass">
+        <button class="gico" type="button" data-step="-1" aria-label="上一部">‹</button>
+        <img data-dock-thumb alt="" width="52" height="52">
+        <div class="room__dock-txt" aria-live="polite"><b data-dock-title>电影</b><small data-dock-sub>Films</small></div>
+        <a class="room__go" href="#films" data-dock-go>播放 ▶</a>
+        <button class="gico" type="button" data-step="1" aria-label="下一部">›</button>
+      </div>
+      <div class="room__dots" data-gallery-dots></div>
+      <div class="room__hint" data-gallery-hint aria-hidden="true"><i></i><span>拖动或左右滑动</span></div>
     </section>
 
-    <nav class="pillars" data-copy-aria="pillarsLabel" aria-label="作品方向">
-      <a class="pillar pillar--film" href="#films">
-        <img src="assets/covers/jiexian.jpg" loading="lazy" decoding="async" alt="">
-        <span class="pillar__no">01</span><b data-copy="navFilm">电影</b><em>Films</em><span class="pillar__n" data-count="film"></span>
-      </a>
-      <a class="pillar pillar--series" href="#series">
-        <img src="assets/covers/yinianfengxi.jpg" loading="lazy" decoding="async" alt="">
-        <span class="pillar__no">02</span><b data-copy="navSeries">漫剧</b><em>Series</em><span class="pillar__n" data-count="series"></span>
-      </a>
-      <a class="pillar pillar--ip" href="#originals">
-        <img src="assets/ip/dengrong-gutuan/p158.jpg" loading="lazy" decoding="async" alt="">
-        <span class="pillar__no">03</span><b data-copy="navOriginals">原创 IP</b><em>Originals</em><span class="pillar__n" data-count="ip"></span>
-      </a>
-      <a class="pillar pillar--game" href="#games">
-        <img src="assets/covers/qingyu-radio.jpg" loading="lazy" decoding="async" alt="">
-        <span class="pillar__no">04</span><b data-copy="navGames">游戏</b><em>Games</em><span class="pillar__n" data-count="interactive"></span>
-      </a>
-    </nav>
+    <aside class="laurels" data-awards-strip aria-label="已有成绩"></aside>
 
     <section class="sec sec--film work-section film-section" id="films" aria-labelledby="films-heading">
       <header class="sec__head section-heading reveal">
@@ -380,5 +378,6 @@
 
   <script src="data.js" defer></script>
   <script src="app.js" defer></script>
+  <script src="gallery.js" defer></script>
 </body>
 </html>

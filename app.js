@@ -414,7 +414,7 @@
   const clearVideoModal = () => {
     videoFrame?.replaceChildren();
     document.body.classList.remove("is-video-modal-open");
-    if (activeVideoTrigger?.isConnected) activeVideoTrigger.focus();
+    if (activeVideoTrigger?.isConnected) activeVideoTrigger.focus({ preventScroll: true });
     activeVideoTrigger = null;
   };
 
@@ -529,7 +529,7 @@
     douyinModal?.classList.remove("is-wechat", "is-mobile", "is-desktop");
     douyinCopyValue?.classList.remove("is-copy-fallback");
     if (douyinStatus) douyinStatus.textContent = "";
-    if (activeDouyinTrigger?.isConnected) activeDouyinTrigger.focus();
+    if (activeDouyinTrigger?.isConnected) activeDouyinTrigger.focus({ preventScroll: true });
     activeDouyinTrigger = null;
   };
 
@@ -850,6 +850,9 @@
   const updateHeader = () => header?.classList.toggle("is-scrolled", window.scrollY > 12);
   updateHeader();
   window.addEventListener("scroll", updateHeader, { passive: true });
+
+  // T28：供首页「空间画廊」(gallery.js) 复用同一套弹窗与提示
+  window.ZV = { language, copy: currentCopy, localize, openVideo: openVideoModal, openDouyin: openDouyinModal, comingSoon: showComingSoon, hasVideo: hasBilibiliVideo };
 
   if (language === "en" && (document.body.classList.contains("ip-page") || document.body.classList.contains("not-found-page"))) {
     document.querySelectorAll('a[href^="index.html"]').forEach((link) => {

@@ -88,22 +88,6 @@ window.PORTFOLIO_DATA = {
       "bvid": "BV12Jtb6FEGg"
     },
     {
-      "id": "cheese",
-      "category": "film",
-      "title": {
-        "zh": "奶酪",
-        "en": "CHEESE"
-      },
-      "highlight": {
-        "zh": "制作中",
-        "en": "In production"
-      },
-      "year": "2026",
-      "cover": "",
-      "link_cn": "",
-      "link_global": ""
-    },
-    {
       "id": "binmeiren",
       "category": "series",
       "title": {

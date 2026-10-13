@@ -83,6 +83,12 @@
         <p>${esc(it.desc)}</p><div class="gcard__meta">${pin}<span>${esc(it.meta)}</span></div></div>
       <div class="gcard__side" aria-hidden="true"><b>${esc(it.title)}</b><small>${esc(it.en)}</small></div></div>`).join("");
     cards = [...track.children];
+    // 竖版图（漫剧海报、角色抠图）在横版卡里放右侧
+    cards.forEach((card) => {
+      const img = card.querySelector(".gcard__img"); if (!img) return;
+      const mark = () => card.classList.toggle("is-tall", img.naturalHeight > img.naturalWidth * .9);
+      if (img.complete && img.naturalWidth) mark(); else img.addEventListener("load", mark, { once: true });
+    });
     if (dots) dots.innerHTML = items.map((it, i) => `<button type="button" data-i="${i}" aria-label="${esc(it.title)}"></button>`).join("");
     const addr = $("[data-room-addr]"); if (addr) addr.textContent = CATS[c].name;
     tabs.forEach((b) => { const on = b.dataset.cat === c; b.classList.toggle("is-on", on); b.setAttribute("aria-selected", on ? "true" : "false"); });
@@ -96,12 +102,13 @@
       let d = i - pos; if (n > 2) { if (d > n / 2) d -= n; if (d < -n / 2) d += n; }
       const a = Math.abs(d), s = Math.sign(d);
       // 中心卡正对；两侧卡向内转，越外越窄越后
-      const x = s * (Math.min(a, 1) * cw * (mobile ? .78 : .86) + Math.max(0, a - 1) * cw * (mobile ? .32 : .5));
-      const rot = -s * Math.min(a, 1) * (mobile ? 32 : 40);
-      const z = -Math.min(a, 1) * 160 - Math.max(0, a - 1) * 120;
+      // 手机：竖版卡；电脑：16:9 横版卡，两侧卡转得更深、靠得更近
+      const x = s * (Math.min(a, 1) * cw * (mobile ? .78 : .62) + Math.max(0, a - 1) * cw * (mobile ? .32 : .2));
+      const rot = -s * Math.min(a, 1) * (mobile ? 32 : 46);
+      const z = -Math.min(a, 1) * (mobile ? 160 : 260) - Math.max(0, a - 1) * (mobile ? 120 : 160);
       c.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rot}deg) scale(${1 - Math.min(a, 2) * .04})`;
       c.style.zIndex = 100 - Math.round(a * 10);
-      c.style.opacity = a > 2.6 ? 0 : 1;
+      c.style.opacity = a > (mobile ? 2.6 : 2.4) ? 0 : 1;
       c.style.filter = a < .5 ? "none" : `brightness(${Math.max(.62, 1 - a * .18)})`;
       c.classList.toggle("is-on", a < .5);
       c.setAttribute("aria-hidden", a < .5 ? "false" : "true");

@@ -6,11 +6,11 @@
   <meta name="theme-color" content="#0b0a09">
   <meta name="color-scheme" content="dark">
   <meta name="robots" content="index, follow">
-  <meta name="description" content="莊女士 ｜ AIGC 导演 · 原创 IP 创作者">
-  <meta property="og:title" content="莊女士｜AIGC 导演 · 原创 IP 创作者">
+  <meta name="description" content="一灵视界 Zero-Vis ｜ AIGC 影视 · 原创 IP · 互动游戏，深圳龙岗。">
+  <meta property="og:title" content="一灵视界 Zero-Vis｜AIGC 影视 · 原创 IP">
   <meta property="og:description" content="一个人，也可以把故事做成电影。">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="莊女士">
+  <meta property="og:site_name" content="一灵视界 Zero-Vis">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
   <meta property="og:url" content="https://zero-vis.cn/">
@@ -21,10 +21,10 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="一个人，也可以把故事做成电影。">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="莊女士｜AIGC 导演 · 原创 IP 创作者">
+  <meta name="twitter:title" content="一灵视界 Zero-Vis｜AIGC 影视 · 原创 IP">
   <meta name="twitter:description" content="一个人，也可以把故事做成电影。">
   <meta name="twitter:image" content="https://zero-vis.cn/assets/og.jpg">
-  <title>莊女士｜AIGC 导演 · 原创 IP 创作者</title>
+  <title>一灵视界 Zero-Vis｜AIGC 影视 · 原创 IP</title>
   <link rel="canonical" href="https://zero-vis.cn/">
   <link rel="alternate" hreflang="zh-CN" href="https://zero-vis.cn/">
   <link rel="alternate" hreflang="en" href="https://zero-vis.cn/?lang=en">
@@ -44,6 +44,9 @@
           "@type": "Organization",
           "@id": "https://zero-vis.cn/#organization",
           "name": "一灵视界（深圳）文化科技有限公司",
+          "alternateName": ["一灵视界", "Zero-Vis"],
+          "url": "https://zero-vis.cn/",
+          "founder": { "@id": "https://zero-vis.cn/#person" },
           "address": "深圳市龙岗区"
         }
       ]
@@ -52,7 +55,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
-  <link rel="preload" href="assets/covers/last-thought.jpg" as="image">
+  <link rel="preload" href="assets/covers/jiexian.jpg" as="image">
   <link rel="preload" href="assets/fonts/NotoSerifSC-Light-subset.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="home.css">
@@ -63,10 +66,10 @@
 <body class="home-page">
   <a class="skip-link" href="#content">电影 Films</a>
 
-  <header class="site-header hd" id="hd" aria-label="莊女士">
+  <header class="site-header hd" id="hd" aria-label="一灵视界 Zero-Vis">
     <a class="brand hd__brand" href="#top">
       <img class="brand__mark" src="assets/brand/mark.svg" alt="" width="22" height="22">
-      <span>莊女士</span>
+      <span>一灵视界 <small class="brand__en">ZERO-VIS</small></span>
     </a>
     <nav class="site-nav hd__nav" aria-label="作品">
       <a href="#films"><i aria-hidden="true">01</i><span data-copy="navFilm">电影</span></a>
@@ -85,7 +88,7 @@
       <div class="room__light" aria-hidden="true"></div>
 
       <div class="room__bar glass">
-        <a class="room__brand" href="#top" aria-label="莊女士"><img src="assets/brand/mark.svg" alt="" width="22" height="22"></a>
+        <a class="room__brand" href="#top" aria-label="一灵视界 Zero-Vis"><img src="assets/brand/mark.svg" alt="" width="22" height="22"><span class="room__name">一灵视界<small>ZERO-VIS</small></span></a>
         <div class="room__nav"><button class="gico" type="button" data-step="-1" aria-label="上一部">‹</button><button class="gico" type="button" data-step="1" aria-label="下一部">›</button></div>
         <div class="room__tabs" role="tablist" aria-label="作品方向">
           <button type="button" role="tab" data-cat="film" aria-selected="true" class="is-on" data-copy="navFilm">电影</button>
@@ -98,7 +101,7 @@
       </div>
 
       <div class="room__tagline">
-        <p class="room__kicker" data-copy="heroSubtitle">莊女士 ｜ AIGC 导演 · 原创 IP 创作者</p>
+        <p class="room__kicker" data-copy="heroSubtitle">一灵视界 ZERO-VIS ｜ AIGC 影视 · 原创 IP · 互动游戏</p>
         <h1 id="hero-title" data-copy="heroTitle">一个人，也可以把故事做成电影。</h1>
       </div>
 
@@ -111,6 +114,8 @@
       <div class="gallery" aria-roledescription="carousel" aria-label="作品画廊">
         <div class="gallery__plinth" aria-hidden="true"></div>
         <div class="gallery__track" data-gallery-track></div>
+        <button class="gallery__arrow gallery__arrow--prev glass" type="button" data-step="-1" aria-label="上一部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="gallery__arrow gallery__arrow--next glass" type="button" data-step="1" aria-label="下一部"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
 
       <div class="room__dock glass">
@@ -193,9 +198,9 @@
         <div class="about__body">
           <p class="about-copy about__text" data-copy="about">我是庄微 Elsa，深圳龙岗人。做了八年展馆和空间叙事，2026 年开始用 AI 拍片，创办了一灵视界。我相信 AI 不会替我做创作判断，但它让一个人也有机会把想象变成完整的作品。我想做的，是一个能慢慢长大、让人记住的 IP。</p>
         <dl class="film-credits" aria-label="创作署名">
-          <div><dt>DIRECTOR</dt><dd>莊女士</dd></div>
-          <div><dt>WRITER</dt><dd>莊女士</dd></div>
-          <div><dt>PRODUCER</dt><dd>莊女士</dd></div>
+          <div><dt>DIRECTOR</dt><dd>莊微 Elsa</dd></div>
+          <div><dt>WRITER</dt><dd>莊微 Elsa</dd></div>
+          <div><dt>PRODUCER</dt><dd>一灵视界</dd></div>
         </dl>
         <p class="studio-credit">一灵视界（深圳）文化科技有限公司</p>
         </div>
@@ -288,9 +293,9 @@
               </figure>
               <figure class="qr-card">
                 <button class="qr-card__button" type="button" data-qr-open data-copy-aria="qrBilibiliOpen" aria-label="放大 B 站二维码">
-                  <img src="assets/contact/qr-bilibili.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrBilibiliAlt" alt="B 站二维码：莊女士啊">
+                  <img src="assets/contact/qr-bilibili.png" width="720" height="960" loading="lazy" decoding="async" data-copy-alt="qrBilibiliAlt" alt="B 站二维码">
                 </button>
-                <figcaption data-copy="qrBilibiliCaption">B 站二维码：莊女士啊</figcaption>
+                <figcaption data-copy="qrBilibiliCaption">B 站二维码</figcaption>
                 <a class="qr-card__external" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer" data-copy="qrBilibiliLink">打开 B 站 ↗</a>
               </figure>
             </div>
@@ -299,7 +304,7 @@
       </div>
 
       <footer class="site-footer ft">
-        <span class="footer-brand"><img src="assets/brand/mark.svg" alt="" width="20" height="20"><span>莊女士</span></span>
+        <span class="footer-brand"><img src="assets/brand/mark.svg" alt="" width="20" height="20"><span>一灵视界 Zero-Vis</span></span>
         <nav class="footer-links" data-copy-aria="footerLinksLabel" aria-label="社交与邮箱链接">
           <a class="social-link" href="https://space.bilibili.com/16082459" target="_blank" rel="noopener noreferrer">
             <svg class="social-link__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">

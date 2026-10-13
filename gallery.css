@@ -342,3 +342,181 @@
   .gallery__plinth { width: calc(var(--cw) * 1.5); height: calc(var(--cw) * .16); }
   .room__tagline h1 { font-size: clamp(20px, 2vw, 28px); }
 }
+
+/* ====== 开场封面卡（精选第 1 张） ====== */
+.gcard--cover { background: #1a120c; }
+.gcover__reel { position: absolute; inset: 0; overflow: hidden; }
+.gcover__reel i { position: absolute; inset: -4%; background-size: cover; background-position: center; opacity: 0;
+  animation: g-reel calc(var(--n) * 3.2s) linear infinite; animation-delay: calc(var(--k) * 3.2s - .6s); }
+.gcover__reel i:first-child { opacity: 1; }
+@keyframes g-reel { 0% { opacity: 0; transform: scale(1.14) translateX(1.5%); } 3% { opacity: 1; } 14% { opacity: 1; } 18% { opacity: 0; transform: scale(1.02) translateX(-1.5%); } 100% { opacity: 0; } }
+.gcover__shade { position: absolute; inset: 0; background:
+  linear-gradient(90deg, rgba(14, 10, 8, .86) 0%, rgba(14, 10, 8, .55) 42%, rgba(14, 10, 8, .05) 75%),
+  linear-gradient(to top, rgba(14, 10, 8, .6), transparent 45%); }
+.gcover__sweep { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 226, 170, .22) 48%, transparent 60%); background-size: 260% 100%;
+  animation: g-sweep 6s ease-in-out infinite; }
+@keyframes g-sweep { 0% { background-position: 130% 0; } 60%, 100% { background-position: -40% 0; } }
+.gcover__chars { position: absolute; right: 2%; bottom: 0; width: 34%; height: 62%; pointer-events: none; }
+.gcover__chars span { position: absolute; left: 50%; bottom: 10%; width: 90%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 160, .55), transparent 65%); animation: g-breathe 5s ease-in-out infinite; }
+@keyframes g-breathe { 50% { opacity: .6; transform: translateX(-50%) scale(1.08); } }
+.gcover__chars img { position: absolute; bottom: 4%; height: 82%; width: auto; filter: drop-shadow(0 16px 20px rgba(30, 15, 5, .55)); animation: g-bob 6s ease-in-out infinite; }
+.gcover__chars img:nth-of-type(1) { left: 2%; }
+.gcover__chars img:nth-of-type(2) { right: 0; height: 72%; animation-delay: -3s; }
+@keyframes g-bob { 50% { transform: translateY(-8px); } }
+.gcover__txt { position: absolute; left: 0; top: 0; bottom: 0; width: 62%; padding: clamp(22px, 3.4vw, 48px); display: flex; flex-direction: column; justify-content: center; }
+.gcover__k { margin: 0; font-family: var(--g-ui); font-weight: 500; font-size: 11px; letter-spacing: .26em; color: var(--g-gold2); }
+.gcover__t { margin: 10px 0 0; font-family: var(--g-zh); font-weight: 300; font-size: clamp(34px, 4.6vw, 72px); line-height: 1.1; letter-spacing: .1em; color: #fff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, .45); background: linear-gradient(180deg, #fff 30%, #f2d39a); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.gcover__s { margin: 12px 0 0; font-size: clamp(13px, 1.1vw, 16px); letter-spacing: .3em; color: var(--g-p2); }
+.gcover__stats { display: flex; gap: 8px; margin: clamp(16px, 2.4vw, 30px) 0 0; padding: 0; list-style: none; flex-wrap: wrap; }
+.gcover__stats li { padding: 10px 14px 9px; border-radius: 16px; min-width: 76px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, .2), rgba(255, 255, 255, .06)); border: 1px solid rgba(255, 255, 255, .26);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4); }
+.gcover__stats b { display: block; font-family: var(--g-en); font-weight: 400; font-size: clamp(22px, 2vw, 30px); line-height: 1; color: #fff; }
+.gcover__stats small { display: block; margin-top: 4px; font-family: var(--g-ui); font-size: 11px; letter-spacing: .12em; color: var(--g-p2); }
+.gcard--cover:not(.is-on) .gcover__txt { opacity: 0; }
+.gcard--cover.is-on .gcard__side { opacity: 0; }
+@media (max-width: 640px) {
+  .gcover__shade { background: linear-gradient(to bottom, rgba(14, 10, 8, .8) 0%, rgba(14, 10, 8, .45) 48%, rgba(14, 10, 8, .1) 70%, rgba(14, 10, 8, .5) 100%); }
+  .gcover__txt { width: 100%; bottom: auto; padding: 26px 20px; justify-content: flex-start; }
+  .gcover__t { font-size: 34px; }
+  .gcover__s { font-size: 12px; letter-spacing: .2em; }
+  .gcover__stats { gap: 6px; }
+  .gcover__stats li { min-width: 0; flex: 1; padding: 8px 8px 7px; border-radius: 12px; text-align: center; }
+  .gcover__stats b { font-size: 20px; }
+  .gcover__stats small { font-size: 10px; letter-spacing: .04em; }
+  .gcover__chars { right: 0; left: 0; width: auto; height: 40%; }
+  .gcover__chars img:nth-of-type(1) { left: 14%; }
+  .gcover__chars img:nth-of-type(2) { right: 14%; }
+}
+
+/* ====== 更强的毛玻璃 + 景深 + 醒目的左右按钮 ====== */
+/* 背景：更大的虚化，加一层细颗粒，像磨砂玻璃后面的房间 */
+.room__bg i { filter: blur(90px) saturate(1.5) brightness(1); }
+.room__light::after { content: ""; position: absolute; inset: 0; opacity: .12; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+/* 玻璃：更厚的边、更亮的高光、更强的磨砂 */
+.home-page .glass {
+  background: linear-gradient(155deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, .10) 42%, rgba(255, 255, 255, .16));
+  border: 1px solid rgba(255, 255, 255, .34);
+  -webkit-backdrop-filter: blur(40px) saturate(185%); backdrop-filter: blur(40px) saturate(185%);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .6), inset 0 -1px 0 rgba(255, 255, 255, .12), inset 0 0 22px rgba(255, 255, 255, .08), 0 24px 60px rgba(0, 0, 0, .4);
+}
+/* 卡片玻璃边框：图片内嵌，四周露出磨砂玻璃 */
+.gcard { box-shadow: 0 0 0 1px rgba(255, 255, 255, .34), inset 0 1.5px 0 rgba(255, 255, 255, .6), 0 40px 90px rgba(0, 0, 0, .5); }
+.gcard__frost { filter: blur(34px) saturate(1.6) brightness(.95); }
+.gcard::before { content: ""; position: absolute; inset: 0; z-index: 4; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .22), inset 0 2px 0 rgba(255, 255, 255, .45), inset 0 0 30px rgba(255, 255, 255, .10);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .14), transparent 18%); }
+@media (min-width: 641px) {
+  .gcard.is-land:not(.is-tall) .gcard__img { left: 12px; top: 12px; width: calc(100% - 24px); height: calc(100% - 24px); border-radius: 22px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .25), 0 12px 30px rgba(0, 0, 0, .35); }
+  .gcard.is-land:not(.is-tall) .gcard__body { left: 30px; bottom: 30px; }
+  .gcard.is-land .gchip--c { right: 30px; top: 28px; }
+  .gcard.is-tall .gcard__img:not(.is-fit) { top: 12px; right: 12px; height: calc(100% - 24px); border-radius: 0 22px 22px 0; }
+  .gcard--cover .gcover__reel { inset: 12px; border-radius: 22px; }
+  .gcard--cover .gcover__shade { inset: 12px; border-radius: 22px; }
+}
+/* 景深：两侧卡片虚化（JS 按距离设置 --blur） */
+.gcard { filter: brightness(var(--dim, 1)) blur(var(--blur, 0px)); }
+
+/* 画廊两侧的大号玻璃箭头 */
+.gallery__arrow {
+  position: absolute; z-index: 150; top: calc(var(--ch) / 2); width: 60px; height: 60px; margin-top: -30px; border-radius: 50%;
+  display: grid; place-items: center; color: #fff; cursor: pointer; padding: 0;
+  transition: transform .3s var(--g-ease), background .3s;
+}
+.gallery__arrow svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .4)); }
+.gallery__arrow--prev { left: calc(50% - var(--cw) / 2 - 30px); }
+.gallery__arrow--next { right: calc(50% - var(--cw) / 2 - 30px); }
+.gallery__arrow:hover { transform: scale(1.08); background: rgba(255, 255, 255, .34); }
+.gallery__arrow:active { transform: scale(.95); }
+.gallery__arrow:focus-visible { outline: 2px solid var(--g-gold2); outline-offset: 3px; }
+.gallery__arrow--next svg { animation: g-nudge 2.4s ease-in-out infinite; }
+@keyframes g-nudge { 0%, 70%, 100% { transform: none; } 80% { transform: translateX(4px); } 90% { transform: translateX(-1px); } }
+.room__dock .gico { background: rgba(255, 255, 255, .26); border-color: rgba(255, 255, 255, .4); }
+@media (max-width: 640px) {
+  .gallery__arrow { width: 44px; height: 44px; margin-top: -22px; }
+  .gallery__arrow svg { width: 18px; height: 18px; }
+  .gallery__arrow--prev { left: 6px; }
+  .gallery__arrow--next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) { .gcover__reel i:not(:first-child), .gcover__sweep { display: none; } }
+
+/* 竖版海报：完整显示，不裁切 */
+@media (min-width: 641px) {
+  .gcard.is-tall .gcard__img:not(.is-fit) { left: auto; right: 12px; top: 12px; width: auto; max-width: 52%; height: calc(100% - 24px); object-fit: cover;
+    border-radius: 18px; -webkit-mask: none; mask: none; box-shadow: 0 0 0 1px rgba(255, 255, 255, .25), 0 16px 36px rgba(0, 0, 0, .45); }
+  .gcard.is-tall .gcard__body { width: 58%; padding-left: 34px; padding-right: 20px; padding-bottom: 30px; }
+  .gcard.is-tall .gcard__body h3 { -webkit-line-clamp: 3; font-size: clamp(22px, 2vw, 32px); }
+  .gcard.is-tall .gcard__en { white-space: normal; }
+  .gcard.is-tall .gcard__body p { -webkit-line-clamp: 4; }
+  .gcard.is-tall .gcard__body::before { background: none; }
+}
+
+/* 封面：画面保持明亮，文字放在左侧一块毛玻璃面板上 */
+.gcover__shade { background: linear-gradient(90deg, rgba(14, 10, 8, .28), transparent 50%), linear-gradient(to top, rgba(14, 10, 8, .25), transparent 40%); }
+.gcover__txt { left: clamp(22px, 2.6vw, 40px); top: 50%; bottom: auto; transform: translateY(-50%); width: auto; max-width: 52%;
+  padding: clamp(20px, 2.4vw, 36px) clamp(22px, 2.6vw, 40px); border-radius: 26px;
+  background: linear-gradient(155deg, rgba(40, 28, 20, .42), rgba(30, 20, 14, .26)); border: 1px solid rgba(255, 255, 255, .3);
+  -webkit-backdrop-filter: blur(26px) saturate(170%); backdrop-filter: blur(26px) saturate(170%);
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .5), inset 0 0 24px rgba(255, 255, 255, .08), 0 24px 60px rgba(0, 0, 0, .3); }
+.gcover__t { text-shadow: none; background: linear-gradient(180deg, #fff 35%, #ffe2b0); -webkit-background-clip: text; background-clip: text; }
+.gcover__stats li { background: linear-gradient(155deg, rgba(255, 255, 255, .26), rgba(255, 255, 255, .08)); }
+@media (max-width: 640px) {
+  .gcover__shade { background: linear-gradient(to bottom, rgba(14, 10, 8, .2), transparent 40%); }
+  .gcover__txt { left: 12px; right: 12px; top: auto; bottom: 12px; transform: none; max-width: none; padding: 18px 16px; border-radius: 20px; }
+  .gcover__t { font-size: 30px; margin-top: 6px; }
+  .gcover__stats { margin-top: 12px; }
+}
+
+/* ====== 角色卡：绘本场景 + 光晕 + 光点 + 动作小图 ====== */
+.gcard__scene { position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(3px) saturate(1.15) brightness(.92); transform: scale(1.04); }
+.gcard.is-char .gcard__glaze { background: linear-gradient(90deg, rgba(30, 18, 10, .5), rgba(30, 18, 10, .12) 55%, rgba(30, 18, 10, 0)); }
+.gcard__halo { position: absolute; right: 6%; bottom: 8%; width: 46%; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 236, 190, .85), rgba(255, 210, 140, .35) 40%, transparent 68%); animation: g-halo 5s ease-in-out infinite; }
+@keyframes g-halo { 50% { opacity: .7; transform: scale(1.07); } }
+.gcard__sparks i { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff6d8; box-shadow: 0 0 12px 3px rgba(255, 220, 150, .9);
+  opacity: 0; animation: g-spark 4s ease-in-out infinite; }
+.gcard__sparks i:nth-child(1) { right: 40%; top: 22%; } .gcard__sparks i:nth-child(2) { right: 12%; top: 30%; animation-delay: -.7s; }
+.gcard__sparks i:nth-child(3) { right: 30%; top: 58%; animation-delay: -1.4s; } .gcard__sparks i:nth-child(4) { right: 8%; top: 70%; animation-delay: -2.1s; }
+.gcard__sparks i:nth-child(5) { right: 46%; top: 44%; animation-delay: -2.8s; } .gcard__sparks i:nth-child(6) { right: 22%; top: 14%; animation-delay: -3.4s; }
+@keyframes g-spark { 0%, 100% { opacity: 0; transform: translateY(6px) scale(.6); } 40% { opacity: 1; transform: none; } 70% { opacity: .2; transform: translateY(-10px) scale(.8); } }
+.gcard.is-char .gcard__img.is-fit { z-index: 1; filter: drop-shadow(0 22px 26px rgba(40, 18, 4, .5)); animation: g-bob 6s ease-in-out infinite; }
+.gposes { display: flex; gap: 8px; margin-top: 12px; }
+.gposes img { width: 54px; height: 54px; object-fit: contain; padding: 4px; border-radius: 14px;
+  background: linear-gradient(155deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, .1)); border: 1px solid rgba(255, 255, 255, .32);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5); }
+@media (min-width: 641px) {
+  .gcard.is-char .gcard__body::before { background: none; }
+  .gcard.is-char .gcard__body { top: auto; left: 26px; bottom: 26px; width: min(50%, 460px); padding: 22px 24px; border-radius: 24px;
+    background: linear-gradient(155deg, rgba(48, 30, 18, .5), rgba(30, 18, 10, .32)); border: 1px solid rgba(255, 255, 255, .3);
+    -webkit-backdrop-filter: blur(24px) saturate(170%); backdrop-filter: blur(24px) saturate(170%);
+    box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, .5), 0 20px 50px rgba(0, 0, 0, .3); }
+  .gcard.is-char .gcard__body h3 { font-size: clamp(30px, 3vw, 46px); letter-spacing: .12em; }
+}
+@media (max-width: 640px) {
+  .gcard__scene { filter: blur(2px) brightness(.85); }
+  .gcard.is-char .gcard__glaze { background: linear-gradient(to top, rgba(30, 18, 10, .75), rgba(30, 18, 10, .1) 50%); }
+  .gcard__halo { left: 50%; right: auto; top: 6%; bottom: auto; width: 80%; transform: translateX(-50%); animation: none; }
+  .gposes img { width: 42px; height: 42px; border-radius: 11px; }
+  .gposes { margin-top: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .gcard__sparks { display: none; } }
+.gcover__t { white-space: nowrap; font-size: clamp(30px, 3.9vw, 62px); }
+.room__kicker, .room__tagline h1 { text-shadow: 0 1px 2px rgba(40, 24, 12, .55), 0 2px 18px rgba(40, 24, 12, .45); }
+@media (max-width: 640px) { .gcover__t { font-size: 30px; } }
+@media (max-width: 640px) {
+  .gcover__stats small { white-space: nowrap; font-size: 9.5px; letter-spacing: 0; }
+  .gallery__arrow { width: 38px; height: 38px; margin-top: -19px; }
+  .gallery__arrow--prev { left: 4px; } .gallery__arrow--next { right: 4px; }
+}
+
+/* 品牌：一灵视界 ZERO-VIS */
+.room__brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; padding-right: 6px; }
+.room__name { display: flex; flex-direction: column; line-height: 1.1; font-family: var(--g-zh); font-weight: 400; font-size: 15px; letter-spacing: .2em; white-space: nowrap; }
+.room__name small { margin-top: 3px; font-family: var(--g-ui); font-weight: 500; font-size: 9px; letter-spacing: .32em; color: var(--g-gold2); }
+.brand__en { margin-left: 6px; font-family: var(--g-ui, "Inter Local", sans-serif); font-size: .62em; letter-spacing: .28em; color: #d6b072; }
+@media (max-width: 1000px) and (min-width: 641px) { .room__name { display: none; } }

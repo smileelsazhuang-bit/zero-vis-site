@@ -63,7 +63,7 @@
   };
   const normalizeSource = (source) => String(source || "").replaceAll("\\", "/");
   const addWatermark = (container) => {
-    const watermark = createElement("span", "ip-watermark", "© 莊女士");
+    const watermark = createElement("span", "ip-watermark", "© 一灵视界 Zero-Vis");
     watermark.dataset.ipWatermark = "";
     watermark.setAttribute("aria-hidden", "true");
     container.append(watermark);
@@ -112,7 +112,7 @@
 
   const canonicalUrl = `https://zero-vis.cn/ip.html?id=${encodeURIComponent(ip.id)}`;
   const pageUrl = language === "en" ? `${canonicalUrl}&lang=en` : canonicalUrl;
-  const pageTitle = language === "en" ? `${ipName} | Zhuang Wei` : `${ipName}｜莊女士`;
+  const pageTitle = language === "en" ? `${ipName} | Zero-Vis` : `${ipName}｜一灵视界 Zero-Vis`;
   document.title = pageTitle;
   setMetaContent('meta[name="description"]', `${ipTagline} ${bookTitle}`.trim());
   setMetaContent('meta[property="og:title"]', pageTitle);

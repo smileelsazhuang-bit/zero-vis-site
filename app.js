@@ -15,7 +15,7 @@
       heroTitleLine2: "也可以把故事",
       heroTitleLine3: "做成电影。",
       heroEnglish: "One creator. Stories made into films.",
-      heroSubtitle: "莊女士 ｜ AIGC 导演 · 原创 IP 创作者",
+      heroSubtitle: "一灵视界 ZERO-VIS ｜ AIGC 影视 · 原创 IP · 互动游戏",
       filmLede: "用 AI 完成编剧、导演、画面与配乐的短片作品。",
       seriesLede: "长篇 AIGC 漫剧，点开海报扫码或跳转抖音观看。",
       gamesLede: "可以直接在网页里玩的叙事游戏。",
@@ -66,8 +66,8 @@
       qrXiaohongshuCaption: "小红书二维码：宇宙手记",
       qrXiaohongshuOpen: "放大小红书二维码",
       qrXiaohongshuLink: "打开小红书 ↗",
-      qrBilibiliAlt: "B 站二维码：莊女士啊",
-      qrBilibiliCaption: "B 站二维码：莊女士啊",
+      qrBilibiliAlt: "B 站二维码",
+      qrBilibiliCaption: "B 站二维码",
       qrBilibiliOpen: "放大 B 站二维码",
       qrBilibiliLink: "打开 B 站 ↗",
       qrClose: "关闭二维码",
@@ -105,7 +105,7 @@
       heroTitleLine2: "Stories made",
       heroTitleLine3: "into films.",
       heroEnglish: "One creator. Stories made into films.",
-      heroSubtitle: "Zhuang Wei (Elsa) | AIGC Director · Original IP Creator",
+      heroSubtitle: "ZERO-VIS 一灵视界 | AIGC Film · Original IP · Interactive",
       filmLede: "Short films written, directed, rendered and scored with AI.",
       seriesLede: "Long-form AIGC series — tap a poster to scan or watch on Douyin.",
       gamesLede: "Story games you can play right in the browser.",
@@ -122,7 +122,7 @@
       featured: "FEATURED",
       production: "In production",
       playNow: "Play now →",
-      about: "I'm Zhuang Wei (Elsa), from Longgang, Shenzhen. After eight years in spatial storytelling for museums and exhibitions, I began making films with AI in 2026 and founded Yiling Vision. AI doesn't make creative decisions for me — but it lets one person turn imagination into finished work. What I want to build is an IP that grows over time and stays with people.",
+      about: "I'm Zhuang Wei (Elsa), from Longgang, Shenzhen. After eight years in spatial storytelling for museums and exhibitions, I began making films with AI in 2026 and founded Zero-Vis (一灵视界). AI doesn't make creative decisions for me — but it lets one person turn imagination into finished work. What I want to build is an IP that grows over time and stays with people.",
       contact: "Open to producers, distributors, and IP partners.",
       studioLabel: "The Studio",
       studioIntro: "Yiling Vision (Shenzhen) Culture & Technology Co., Ltd. is an OPC-AIGC content company based in the Fengxing OPC-AIGC Industrial Park in Longgang, Shenzhen. Working on a \"one core creator + AI workflow + project-based collaboration\" model, it focuses on AIGC filmmaking, digital exhibitions and industrialized AI production.",
@@ -156,8 +156,8 @@
       qrXiaohongshuCaption: "Xiaohongshu QR code: 宇宙手记",
       qrXiaohongshuOpen: "Enlarge Xiaohongshu QR code",
       qrXiaohongshuLink: "Open Xiaohongshu ↗",
-      qrBilibiliAlt: "Bilibili QR code: 莊女士啊",
-      qrBilibiliCaption: "Bilibili QR code: 莊女士啊",
+      qrBilibiliAlt: "Bilibili QR code",
+      qrBilibiliCaption: "Bilibili QR code",
       qrBilibiliOpen: "Enlarge Bilibili QR code",
       qrBilibiliLink: "Open Bilibili ↗",
       qrClose: "Close QR code",
@@ -201,8 +201,8 @@
   document.documentElement.lang = language === "en" ? "en" : "zh-CN";
   if (!document.body.classList.contains("ip-page") && !document.body.classList.contains("not-found-page")) {
     document.title = language === "en"
-      ? "Zhuang Wei (Elsa) | AIGC Director · Original IP Creator"
-      : "莊女士｜AIGC 导演 · 原创 IP 创作者";
+      ? "Zero-Vis | AIGC Film · Original IP"
+      : "一灵视界 Zero-Vis｜AIGC 影视 · 原创 IP";
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = currentCopy.heroSubtitle;
   }

@@ -44,14 +44,18 @@
         { title: "角色设定图", en: "Character Sheets", img: IP + "sheet-dengrong.jpg", desc: "三视图与表情设定，灯绒的灯苞触角、月纹斗篷与菇团的歪尖帽都在这里定稿。", meta: "官方设定 · 2026", go: "查看设定 →", chip: T.expand, href: ipHref() },
       ];
   ipItems.forEach((it) => { it.kind = "ip"; it.live = true; });
+  // 角色卡：绘本场景做背景 + 动作小图
+  Object.assign(ipItems[0], { scene: IP + "p098.jpg", poses: [1, 3, 5].map((n) => `${IP}cutout/dengrong-pose${n}.webp`) });
+  Object.assign(ipItems[1], { scene: IP + "p116.jpg", poses: [1, 3, 5].map((n) => `${IP}cutout/gutuan-pose${n}.webp`) });
 
-  const CATS = {
+  let CATS = {
     film: { name: en ? "Films" : "电影", en: "Films", accent: "#d6b072", items: fromData("film", "film") },
     series: { name: en ? "Series" : "漫剧", en: "Series", accent: "#e0705a", items: fromData("series", "series") },
     ip: { name: en ? "Originals" : "原创 IP", en: "Originals", accent: "#f2b84b", items: ipItems },
     game: { name: en ? "Games" : "游戏", en: "Games", accent: "#86c1b5", items: fromData("interactive", "game") },
   };
   Object.keys(CATS).forEach((k) => { if (!CATS[k].items.length) delete CATS[k]; });
+
 
   const $ = (sel) => room.querySelector(sel);
   const dots = $("[data-gallery-dots]");
@@ -74,13 +78,13 @@
     if (!CATS[c]) return;
     cat = c; items = CATS[c].items; idx = pos = 0;
     room.style.setProperty("--accent", CATS[c].accent);
-    const land = c === "film" || c === "game";
-    track.innerHTML = items.map((it, i) => `<div class="gcard${land ? " is-land" : ""}" data-i="${i}" role="group" aria-roledescription="slide" aria-label="${esc(it.title)} · ${i + 1} / ${items.length}">
+    track.innerHTML = items.map((it, i) => `<div class="gcard${it.kind === "film" || it.kind === "game" ? " is-land" : ""}${it.scene ? " is-char" : ""}" data-i="${i}" role="group" aria-roledescription="slide" aria-label="${esc(it.title)} · ${i + 1} / ${items.length}">
       ${it.img ? `<div class="gcard__frost" style="background-image:url('${esc(it.img)}')"></div>` : ""}<div class="gcard__glaze"></div>
+      ${it.scene ? `<div class="gcard__scene" style="background-image:url('${esc(it.scene)}')"></div><span class="gcard__halo" aria-hidden="true"></span><span class="gcard__sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>` : ""}
       ${it.img ? `<img class="gcard__img${it.fit ? " is-fit" : ""}" src="${esc(it.img)}" alt="" draggable="false" decoding="async"${i > 2 && i < items.length - 1 ? ' loading="lazy"' : ""}>` : `<span class="gcard__ph">${esc(it.title)}</span>`}
       ${it.chip ? `<span class="gchip gchip--c" aria-hidden="true">${esc(it.chip)}</span>` : ""}<span class="gchip gchip--r" aria-hidden="true">···</span>
       <div class="gcard__body"><h3>${esc(it.title)}</h3><span class="gcard__num">${i + 1} / ${items.length}</span><span class="gcard__en">${esc(it.en)}</span>
-        <p>${esc(it.desc)}</p><div class="gcard__meta">${pin}<span>${esc(it.meta)}</span></div></div>
+        <p>${esc(it.desc)}</p><div class="gcard__meta">${pin}<span>${esc(it.meta)}</span></div>${it.poses ? `<div class="gposes" aria-hidden="true">${it.poses.map((u) => `<img src="${esc(u)}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : ""}</div>
       <div class="gcard__side" aria-hidden="true"><b>${esc(it.title)}</b><small>${esc(it.en)}</small></div></div>`).join("");
     cards = [...track.children];
     // 竖版图（漫剧海报、角色抠图）在横版卡里放右侧
@@ -109,7 +113,10 @@
       c.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rot}deg) scale(${1 - Math.min(a, 2) * .04})`;
       c.style.zIndex = 100 - Math.round(a * 10);
       c.style.opacity = a > (mobile ? 2.6 : 2.4) ? 0 : 1;
-      c.style.filter = a < .5 ? "none" : `brightness(${Math.max(.62, 1 - a * .18)})`;
+      // 景深：离中心越远越暗、越虚
+      c.style.filter = "";
+      c.style.setProperty("--dim", a < .5 ? 1 : Math.max(.6, 1 - a * .2).toFixed(2));
+      c.style.setProperty("--blur", `${reduce ? 0 : Math.min(a, 2.2) * (mobile ? 1.6 : 2.6)}px`);
       c.classList.toggle("is-on", a < .5);
       c.setAttribute("aria-hidden", a < .5 ? "false" : "true");
     });
@@ -133,8 +140,11 @@
     else { dockGo.href = `#${it.kind === "film" ? "films" : it.kind === "series" ? "series" : "games"}`; dockGo.removeAttribute("target"); dockGo.removeAttribute("rel"); }
     dockGo.setAttribute("aria-haspopup", it.live && (it.kind === "film" || it.kind === "series") ? "dialog" : "false");
     if (dock) { dock.classList.remove("is-pop"); void dock.offsetWidth; dock.classList.add("is-pop"); }
-    if (it.img && bgs.length === 2) {
-      flip ^= 1; bgs[flip].style.backgroundImage = `url('${it.img}')`;
+    if (it.img) setBg(it.img);
+  }
+  function setBg(url) {
+    if (url && bgs.length === 2) {
+      flip ^= 1; bgs[flip].style.backgroundImage = `url('${url}')`;
       bgs[flip].classList.add("is-on"); bgs[flip ^ 1].classList.remove("is-on");
     }
   }
@@ -220,5 +230,5 @@
   }
   body.classList.add("is-room-view");
 
-  build(CATS.film ? "film" : Object.keys(CATS)[0], true);
+  build(Object.keys(CATS)[0], true);
 })();

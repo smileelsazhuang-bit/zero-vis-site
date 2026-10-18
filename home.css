@@ -155,6 +155,8 @@
 .home-page .hd__brand img {
   width: 22px;
   height: 22px;
+  flex: 0 0 22px;
+  object-fit: contain;
 }
 
 .home-page .hd__nav {
@@ -509,7 +511,7 @@
 .home-page .film-feature__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .home-page .play {
@@ -601,7 +603,7 @@
 
 .home-page .card__media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--ink-3);
 }
@@ -609,13 +611,13 @@
 .home-page .card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .home-page .card:hover .card__media img,
 .home-page .card:focus-visible .card__media img {
-  transform: scale(1.05);
+  transform: none;
 }
 
 .home-page .card__media .play {
@@ -918,13 +920,13 @@
 .home-page .game__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.7s;
 }
 
 .home-page .game:hover .game__media img,
 .home-page .game:focus-visible .game__media img {
-  transform: scale(1.04);
+  transform: none;
 }
 
 .home-page .game__body {

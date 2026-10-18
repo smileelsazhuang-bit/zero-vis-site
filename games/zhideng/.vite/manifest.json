@@ -3,8 +3,8 @@
     "file": "assets/phaser-Jt__PiWe.js",
     "name": "phaser"
   },
-  "_story-content-uCn3HaMy.js": {
-    "file": "assets/story-content-uCn3HaMy.js",
+  "_story-content-CUT10Vay.js": {
+    "file": "assets/story-content-CUT10Vay.js",
     "name": "story-content"
   },
   "_validation-cFkovD_R.js": {
@@ -12,17 +12,17 @@
     "name": "validation"
   },
   "index.html": {
-    "file": "assets/index-DSdwA4-P.js",
+    "file": "assets/index-Ce_XaK8N.js",
     "name": "index",
     "src": "index.html",
     "isEntry": true,
     "imports": [
       "_phaser-Jt__PiWe.js",
-      "_story-content-uCn3HaMy.js",
+      "_story-content-CUT10Vay.js",
       "_validation-cFkovD_R.js"
     ],
     "css": [
-      "assets/index-Dy3VWC5W.css"
+      "assets/index-BdcAUU1L.css"
     ]
   }
 }

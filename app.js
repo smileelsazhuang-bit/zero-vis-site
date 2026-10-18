@@ -651,13 +651,18 @@
     toastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 1800);
   };
 
-  const createLazyImage = (work, className = "") => {
+  const createLazyImage = (work, className = "", useWide = false) => {
     const image = createElement("img", className);
-    image.src = String(work.cover).replaceAll("\\", "/");
+    const original = String(work.cover).replaceAll("\\", "/");
+    const variant = useWide ? window.PORTFOLIO_IMAGE_VARIANTS?.[work.id]?.wide : "";
+    image.src = variant || original;
     image.alt = localize(work.title);
     image.loading = "lazy";
     image.decoding = "async";
-    image.addEventListener("error", () => image.remove(), { once: true });
+    image.addEventListener("error", () => {
+      if (image.getAttribute("src") !== original) image.src = original;
+      else image.remove();
+    });
     return image;
   };
 
@@ -675,7 +680,7 @@
 
     const media = createElement("button", "film-feature__media work-link");
     bindFilmAction(media, work);
-    if (work.cover) media.append(createLazyImage(work));
+    if (work.cover) media.append(createLazyImage(work, "", true));
     const play = createElement("span", "play");
     play.setAttribute("aria-hidden", "true");
     media.append(play);
@@ -704,7 +709,7 @@
 
     const media = createElement("div", "card__media");
     if (work.cover) {
-      media.append(createLazyImage(work));
+      media.append(createLazyImage(work, "", true));
     } else {
       media.append(
         createElement("span", "card__placeholder", localize(work.title)),

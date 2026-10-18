@@ -25,6 +25,8 @@
     const live = kind === "film" ? ZV.hasVideo?.(w) : kind === "series" ? !!w.link_cn : !!w.play_url;
     return {
       work: w, kind, live, title: L(w.title), en: (en ? w.title?.zh : w.title?.en) || "", desc: L(w.highlight), img: w.cover || "",
+      wideImg: window.PORTFOLIO_IMAGE_VARIANTS?.[w.id]?.wide || "",
+      allSizes: window.PORTFOLIO_IMAGE_VARIANTS?.[w.id]?.allSizes === true,
       meta: `${w.year || "2026"} · ${live ? (kind === "film" ? T.bili : kind === "series" ? T.dy : T.web) : (kind === "film" ? T.making : T.soon)}`,
       go: live ? (kind === "film" ? T.play : kind === "series" ? T.douyin : T.game) : (kind === "film" ? T.making : T.soon),
       chip: live && kind === "film" ? T.full : live && kind === "game" ? T.open : "",
@@ -74,24 +76,49 @@
   const langDst = $("[data-room-lang]");
   if (langSrc && langDst) { langDst.href = langSrc.href; langDst.textContent = langSrc.textContent; }
 
+  const ambientImage = (it) => it.allSizes && it.wideImg && !it.variantFailed ? it.wideImg : it.img;
+
+  function syncAmbient(it) {
+    const url = ambientImage(it);
+    const thumb = $("[data-dock-thumb]");
+    if (thumb) { if (url) thumb.src = url; else thumb.removeAttribute("src"); }
+    if (url) setBg(url);
+  }
+
   function build(c, animate) {
     if (!CATS[c]) return;
     cat = c; items = CATS[c].items; idx = pos = 0;
+    room.dataset.category = c;
     room.style.setProperty("--accent", CATS[c].accent);
-    track.innerHTML = items.map((it, i) => `<div class="gcard${it.kind === "film" || it.kind === "game" ? " is-land" : ""}${it.scene ? " is-char" : ""}" data-i="${i}" role="group" aria-roledescription="slide" aria-label="${esc(it.title)} · ${i + 1} / ${items.length}">
-      ${it.img ? `<div class="gcard__frost" style="background-image:url('${esc(it.img)}')"></div>` : ""}<div class="gcard__glaze"></div>
+    track.innerHTML = items.map((it, i) => `<div class="gcard${it.kind === "film" || it.kind === "game" || it.wideImg ? " is-land" : ""}${it.scene ? " is-char" : ""}${it.kind === "ip" && !it.fit ? " is-art" : ""}" data-i="${i}" data-kind="${it.kind}"${it.work ? ` data-work-id="${esc(it.work.id)}"` : ""} role="group" aria-roledescription="slide" aria-label="${esc(it.title)} · ${i + 1} / ${items.length}">
+      ${it.img ? `<div class="gcard__frost" style="background-image:url('${esc(ambientImage(it))}')"></div>` : ""}<div class="gcard__glaze"></div>
       ${it.scene ? `<div class="gcard__scene" style="background-image:url('${esc(it.scene)}')"></div><span class="gcard__halo" aria-hidden="true"></span><span class="gcard__sparks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>` : ""}
-      ${it.img ? `<img class="gcard__img${it.fit ? " is-fit" : ""}" src="${esc(it.img)}" alt="" draggable="false" decoding="async"${i > 2 && i < items.length - 1 ? ' loading="lazy"' : ""}>` : `<span class="gcard__ph">${esc(it.title)}</span>`}
+      ${it.img ? `<picture class="gcard__picture">${it.wideImg && !it.variantFailed ? `<source${it.allSizes ? "" : ' media="(min-width: 641px)"'} srcset="${esc(it.wideImg)}">` : ""}<img class="gcard__img${it.fit ? " is-fit" : ""}" src="${esc(it.img)}" alt="" draggable="false" decoding="async"${i > 2 && i < items.length - 1 ? ' loading="lazy"' : ""}></picture>` : `<span class="gcard__ph">${esc(it.title)}</span>`}
       ${it.chip ? `<span class="gchip gchip--c" aria-hidden="true">${esc(it.chip)}</span>` : ""}<span class="gchip gchip--r" aria-hidden="true">···</span>
       <div class="gcard__body"><h3>${esc(it.title)}</h3><span class="gcard__num">${i + 1} / ${items.length}</span><span class="gcard__en">${esc(it.en)}</span>
         <p>${esc(it.desc)}</p><div class="gcard__meta">${pin}<span>${esc(it.meta)}</span></div>${it.poses ? `<div class="gposes" aria-hidden="true">${it.poses.map((u) => `<img src="${esc(u)}" alt="" loading="lazy" draggable="false">`).join("")}</div>` : ""}</div>
       <div class="gcard__side" aria-hidden="true"><b>${esc(it.title)}</b><small>${esc(it.en)}</small></div></div>`).join("");
     cards = [...track.children];
-    // 竖版图（漫剧海报、角色抠图）在横版卡里放右侧
-    cards.forEach((card) => {
+    // 使用实际选中的响应式图像判断方向，窗口跨断点时也重新计算。
+    cards.forEach((card, i) => {
       const img = card.querySelector(".gcard__img"); if (!img) return;
+      const item = items[i];
+      const originalSrc = img.getAttribute("src");
       const mark = () => card.classList.toggle("is-tall", img.naturalHeight > img.naturalWidth * .9);
-      if (img.complete && img.naturalWidth) mark(); else img.addEventListener("load", mark, { once: true });
+      img.addEventListener("load", mark);
+      img.addEventListener("error", () => {
+        // A missing derivative must not hide the original cover.
+        const source = img.parentElement.querySelector("source");
+        if (source) {
+          item.variantFailed = true;
+          source.remove();
+          img.src = originalSrc;
+          const frost = card.querySelector(".gcard__frost");
+          if (frost) frost.style.backgroundImage = `url('${originalSrc}')`;
+          if (card.isConnected && card.classList.contains("is-on")) syncAmbient(item);
+        }
+      }, { once: true });
+      if (img.complete && img.naturalWidth) mark();
     });
     if (dots) dots.innerHTML = items.map((it, i) => `<button type="button" data-i="${i}" aria-label="${esc(it.title)}"></button>`).join("");
     const addr = $("[data-room-addr]"); if (addr) addr.textContent = CATS[c].name;
@@ -130,7 +157,6 @@
     const it = items[idx], C = CATS[cat];
     if (!it) return;
     if (dots) [...dots.children].forEach((d, i) => d.classList.toggle("is-on", i === idx));
-    const thumb = $("[data-dock-thumb]"); if (thumb) { if (it.img) thumb.src = it.img; else thumb.removeAttribute("src"); }
     $("[data-dock-title]").textContent = it.title;
     $("[data-dock-sub]").textContent = `${C.name}${en ? "" : " · " + C.en} · ${String(idx + 1).padStart(2, "0")} / ${String(items.length).padStart(2, "0")}`;
     dockGo.textContent = it.go;
@@ -140,7 +166,7 @@
     else { dockGo.href = `#${it.kind === "film" ? "films" : it.kind === "series" ? "series" : "games"}`; dockGo.removeAttribute("target"); dockGo.removeAttribute("rel"); }
     dockGo.setAttribute("aria-haspopup", it.live && (it.kind === "film" || it.kind === "series") ? "dialog" : "false");
     if (dock) { dock.classList.remove("is-pop"); void dock.offsetWidth; dock.classList.add("is-pop"); }
-    if (it.img) setBg(it.img);
+    syncAmbient(it);
   }
   function setBg(url) {
     if (url && bgs.length === 2) {

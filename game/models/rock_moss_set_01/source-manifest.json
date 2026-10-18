@@ -1,0 +1,46 @@
+{
+  "id": "rock_moss_set_01",
+  "name": "Rock Moss Set 01",
+  "author": {
+    "Kless Gyzen": "All"
+  },
+  "source": "https://polyhaven.com/a/rock_moss_set_01",
+  "license": "CC0-1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "downloaded": "2026-10-16",
+  "version": "official-1k-gltf",
+  "bytes": 1937065,
+  "polygons": 63127,
+  "files": [
+    {
+      "path": "rock_moss_set_01_1k.gltf",
+      "bytes": 9987,
+      "md5": "75113cc1c21806cca5d8badad4737af7",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/rock_moss_set_01/rock_moss_set_01_1k.gltf"
+    },
+    {
+      "path": "textures/rock_moss_set_01_nor_gl_1k.jpg",
+      "bytes": 209975,
+      "md5": "eb7ebd31ad08e78d0497900652ff1568",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_nor_gl_1k.jpg"
+    },
+    {
+      "path": "rock_moss_set_01.bin",
+      "bytes": 1466380,
+      "md5": "207a51c9f56d34732e9814bbf9cc07b1",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/rock_moss_set_01/rock_moss_set_01.bin"
+    },
+    {
+      "path": "textures/rock_moss_set_01_rough_1k.jpg",
+      "bytes": 82624,
+      "md5": "ed9d8a2c863262f76f881346e8047c6a",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_rough_1k.jpg"
+    },
+    {
+      "path": "textures/rock_moss_set_01_diff_1k.jpg",
+      "bytes": 168099,
+      "md5": "b8742301e6b4bc5683d2de712e83f772",
+      "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/rock_moss_set_01/rock_moss_set_01_diff_1k.jpg"
+    }
+  ]
+}

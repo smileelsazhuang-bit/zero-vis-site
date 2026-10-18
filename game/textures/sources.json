@@ -1,0 +1,168 @@
+{
+  "provider": "Poly Haven",
+  "license": "CC0 1.0 Universal",
+  "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "providerLicenseStatement": "https://polyhaven.com/license",
+  "retrievedOn": "2026-10-15",
+  "resolution": "1k",
+  "normalConvention": "OpenGL",
+  "assets": [
+    {
+      "id": "rock_boulder_dry",
+      "name": "Rock Boulder Dry",
+      "authors": {
+        "Dimitrios Savva": "Photography",
+        "Rico Cilliers": "Processing"
+      },
+      "page": "https://polyhaven.com/a/rock_boulder_dry",
+      "filesApi": "https://api.polyhaven.com/files/rock_boulder_dry",
+      "physicalDimensionsMm": [
+        1799.9999523162842,
+        1800.0001907348633
+      ],
+      "maps": [
+        {
+          "role": "diffuse",
+          "filename": "rock_boulder_dry_diffuse_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_dry/rock_boulder_dry_diff_1k.jpg",
+          "bytes": 859211,
+          "md5": "da794cd9be3db91e3160cf081109f322",
+          "apiMap": "Diffuse"
+        },
+        {
+          "role": "normal",
+          "filename": "rock_boulder_dry_normal_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_dry/rock_boulder_dry_nor_gl_1k.jpg",
+          "bytes": 802497,
+          "md5": "6f1c575ceed560ae253f65518cf748e2",
+          "apiMap": "nor_gl"
+        },
+        {
+          "role": "roughness",
+          "filename": "rock_boulder_dry_roughness_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_boulder_dry/rock_boulder_dry_rough_1k.jpg",
+          "bytes": 668127,
+          "md5": "0c8b15df3e31c15256da5f8e1b0d0759",
+          "apiMap": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "bark_brown_02",
+      "name": "Bark Brown 02",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "page": "https://polyhaven.com/a/bark_brown_02",
+      "filesApi": "https://api.polyhaven.com/files/bark_brown_02",
+      "physicalDimensionsMm": [
+        999.9990463256836,
+        999.998927116394
+      ],
+      "maps": [
+        {
+          "role": "diffuse",
+          "filename": "bark_brown_02_diffuse_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_02/bark_brown_02_diff_1k.jpg",
+          "bytes": 659592,
+          "md5": "6669cca520594bdca19f94084984ab72",
+          "apiMap": "Diffuse"
+        },
+        {
+          "role": "normal",
+          "filename": "bark_brown_02_normal_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_02/bark_brown_02_nor_gl_1k.jpg",
+          "bytes": 1015623,
+          "md5": "1cad3fe0349a44df2d4d1c2859c79920",
+          "apiMap": "nor_gl"
+        },
+        {
+          "role": "roughness",
+          "filename": "bark_brown_02_roughness_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/bark_brown_02/bark_brown_02_rough_1k.jpg",
+          "bytes": 337946,
+          "md5": "bbcde696e5b9418cdcb2abe638965417",
+          "apiMap": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "brown_mud_leaves_01",
+      "name": "Brown Mud Leaves 01",
+      "authors": {
+        "Rob Tuytel": "All"
+      },
+      "page": "https://polyhaven.com/a/brown_mud_leaves_01",
+      "filesApi": "https://api.polyhaven.com/files/brown_mud_leaves_01",
+      "physicalDimensionsMm": [
+        1299.9998331069946,
+        1299.9998331069946
+      ],
+      "maps": [
+        {
+          "role": "diffuse",
+          "filename": "brown_mud_leaves_01_diffuse_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brown_mud_leaves_01/brown_mud_leaves_01_diff_1k.jpg",
+          "bytes": 1206953,
+          "md5": "5340848384f9bb19bfa6e7ac459683d7",
+          "apiMap": "Diffuse"
+        },
+        {
+          "role": "normal",
+          "filename": "brown_mud_leaves_01_normal_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brown_mud_leaves_01/brown_mud_leaves_01_nor_gl_1k.jpg",
+          "bytes": 1486072,
+          "md5": "3698df51ef8262ddf2248ffca1e73196",
+          "apiMap": "nor_gl"
+        },
+        {
+          "role": "roughness",
+          "filename": "brown_mud_leaves_01_roughness_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/brown_mud_leaves_01/brown_mud_leaves_01_rough_1k.jpg",
+          "bytes": 644332,
+          "md5": "3896f151d1b1de421a61c3c5d9a742b0",
+          "apiMap": "Rough"
+        }
+      ]
+    },
+    {
+      "id": "stone_tiles_02",
+      "name": "Stone Tiles 02",
+      "authors": {
+        "Charlotte Baglioni": "All"
+      },
+      "page": "https://polyhaven.com/a/stone_tiles_02",
+      "filesApi": "https://api.polyhaven.com/files/stone_tiles_02",
+      "physicalDimensionsMm": [
+        2000,
+        2000
+      ],
+      "maps": [
+        {
+          "role": "diffuse",
+          "filename": "stone_tiles_02_diffuse_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tiles_02/stone_tiles_02_diff_1k.jpg",
+          "bytes": 817710,
+          "md5": "8d2ebfc3505efbb610aa5010d38d2df8",
+          "apiMap": "Diffuse"
+        },
+        {
+          "role": "normal",
+          "filename": "stone_tiles_02_normal_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tiles_02/stone_tiles_02_nor_gl_1k.jpg",
+          "bytes": 873564,
+          "md5": "cca5bd87964b755cc85c01322e8d1a0e",
+          "apiMap": "nor_gl"
+        },
+        {
+          "role": "roughness",
+          "filename": "stone_tiles_02_roughness_1k.jpg",
+          "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/stone_tiles_02/stone_tiles_02_rough_1k.jpg",
+          "bytes": 476160,
+          "md5": "714fdf8447c0c1745d3c2957bb581af4",
+          "apiMap": "Rough"
+        }
+      ]
+    }
+  ]
+}

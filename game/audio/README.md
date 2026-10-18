@@ -1,6 +1,7 @@
 # 月下石廊 · 游戏配乐
 
 - 游戏资产：`music-academy-night.mp3`，69 秒、44.1 kHz、立体声、160 kbps，1,381,499 字节。
+- iPhone 原生备用资产：`music-academy-night-aac.m4a`，同一配乐转码为 AAC-LC、44.1 kHz、立体声、128 kbps，1,161,119 字节；MP4 头部前置，便于尽早加载。完整解码与单声道混合已验证，单声道平均约 -17.8 dB、峰值约 -3.9 dB，无相位抵消成静音的情况。
 - 来源：Dreamina / 即梦，`seed_music_1.0` 的 music 模式，2026-10-18 原创生成。
 - 画布：https://jimeng.jianying.com/ai-tool/ai-canvas/0d85ba62-b312-471c-9409-c3b93eb31a97
 - 原始资源 ID：`443e26ad-7a3d-4365-8769-efcc94d2ea95`。

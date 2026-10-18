@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-18T04:03:30.007Z",
+  "createdAt": "2026-10-18T04:23:42.503Z",
   "base": "./",
   "files": [
     {
@@ -19,14 +19,19 @@
       "sha256": "fde6ad29c393debeab79dc817e9a1fab2f557e02f57b31b68492843f49fe2b67"
     },
     {
-      "path": "assets/index-CyYs4ddi.js",
-      "bytes": 936862,
-      "sha256": "02df5ceaa9f4c5f0d6ab957ee8ba825ccc7ed01004f1da2433fece70a9789630"
+      "path": "assets/index-DZyufIlO.js",
+      "bytes": 951643,
+      "sha256": "818dfd3119bf2743bbd585f1d36077544e1a802d703000891cf9da347d895bc8"
     },
     {
       "path": "audio/README.md",
-      "bytes": 1098,
-      "sha256": "b9329b9dc3c960f25361d173c1819d0849a636b0c8871a60cb18e5349aa8cf82"
+      "bytes": 1413,
+      "sha256": "fb40413416f8ff3233939ddf38dec7522bc66e7d778d67cea57204018ddd48e1"
+    },
+    {
+      "path": "audio/music-academy-night-aac.m4a",
+      "bytes": 1161119,
+      "sha256": "b14804bc8d42735b3397af0c4ab28dd1ef32a02bd9477ebac5f2410fd4ecab56"
     },
     {
       "path": "audio/music-academy-night.mp3",
@@ -40,13 +45,13 @@
     },
     {
       "path": "fonts/MoonveilLatin-UI.woff2",
-      "bytes": 20740,
-      "sha256": "ea457737a73314b0e93f0ebde2704d9eb1b7d34aaf3c340e45e6aba7b3cf4ca8"
+      "bytes": 20748,
+      "sha256": "e2c97f0613f8dc8df27afd6f564bea493eec34075934cbe76738d0bde1adeb87"
     },
     {
       "path": "fonts/MoonveilSerif-UI.woff2",
-      "bytes": 241160,
-      "sha256": "8c526ee95f5d38d5f6491b5fdf95ec1d245373fb3ee7af79219a7edfdda34056"
+      "bytes": 251656,
+      "sha256": "3a7f256298d7e1aef0b84753ce97e00594d2b7a98ddbc63a194bb884c2af080d"
     },
     {
       "path": "fonts/NotoSerifSC-OFL.txt",
@@ -60,8 +65,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 841,
-      "sha256": "84c8c44fc5c4e5fd6babb815362a76d38977d795c76f1291a7492898a7ad26b9"
+      "bytes": 984,
+      "sha256": "c94875ddc45b285d50fb6a0c7d8aca3f961dcbc64756e132241406ae098b5b6f"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",
@@ -382,6 +387,11 @@
       "path": "textures/sources.json",
       "bytes": 5911,
       "sha256": "512c998b5d8df81d5e3c7a2bd3c098d2e289ad09b403a5d1e4c648dd922752c6"
+    },
+    {
+      "path": "version.json",
+      "bytes": 122,
+      "sha256": "7e8c2aa58b3152dc51d7b1815ed41b2f37553a7e1f02cc53991604f6109863e9"
     }
   ]
 }

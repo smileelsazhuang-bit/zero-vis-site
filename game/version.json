@@ -1,0 +1,4 @@
+{
+  "version": "20261018-audio-output-2",
+  "audio": "buffer-first on iPhone and WeChat; exclusive native AAC fallback"
+}

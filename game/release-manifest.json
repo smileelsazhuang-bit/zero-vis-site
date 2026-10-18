@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-18T03:37:24.617Z",
+  "createdAt": "2026-10-18T04:03:30.007Z",
   "base": "./",
   "files": [
     {
@@ -14,14 +14,14 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "assets/index-CvOcN3uR.js",
-      "bytes": 932604,
-      "sha256": "c983cf7827561c3928b66d008a4bdc508f11764d3bf19d0137d97df43f6933a8"
+      "path": "assets/index-Bzm4Zk_Y.css",
+      "bytes": 48769,
+      "sha256": "fde6ad29c393debeab79dc817e9a1fab2f557e02f57b31b68492843f49fe2b67"
     },
     {
-      "path": "assets/index-kaqIXcep.css",
-      "bytes": 47176,
-      "sha256": "b88fb731a1c8abd8b08a105d672a8fcf3e15dfa0afd39c6756cecdb80bbf9d02"
+      "path": "assets/index-CyYs4ddi.js",
+      "bytes": 936862,
+      "sha256": "02df5ceaa9f4c5f0d6ab957ee8ba825ccc7ed01004f1da2433fece70a9789630"
     },
     {
       "path": "audio/README.md",
@@ -40,13 +40,13 @@
     },
     {
       "path": "fonts/MoonveilLatin-UI.woff2",
-      "bytes": 20776,
-      "sha256": "41983a521a3d20d5b7acc071e31d9075186b3a8af688ca4db26ee21e5df8572d"
+      "bytes": 20740,
+      "sha256": "ea457737a73314b0e93f0ebde2704d9eb1b7d34aaf3c340e45e6aba7b3cf4ca8"
     },
     {
       "path": "fonts/MoonveilSerif-UI.woff2",
-      "bytes": 239552,
-      "sha256": "0b1bba9b6c046274ded27657191496b833175fba09aeafd75a17ddcb64a711ad"
+      "bytes": 241160,
+      "sha256": "8c526ee95f5d38d5f6491b5fdf95ec1d245373fb3ee7af79219a7edfdda34056"
     },
     {
       "path": "fonts/NotoSerifSC-OFL.txt",
@@ -61,7 +61,7 @@
     {
       "path": "index.html",
       "bytes": 841,
-      "sha256": "efde9696cdb12ac8355cc613717e51e37d32edaa6469ebf66aacd85c5a706762"
+      "sha256": "84c8c44fc5c4e5fd6babb815362a76d38977d795c76f1291a7492898a7ad26b9"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",

@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-18T03:00:42.880Z",
+  "createdAt": "2026-10-18T03:37:24.617Z",
   "base": "./",
   "files": [
     {
@@ -14,14 +14,24 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "assets/index-CV3ET-ZD.js",
-      "bytes": 920527,
-      "sha256": "af46f02ab5199b0a26eed29a0507c96a6ede8a933e4f2030151f02532e4a1828"
+      "path": "assets/index-CvOcN3uR.js",
+      "bytes": 932604,
+      "sha256": "c983cf7827561c3928b66d008a4bdc508f11764d3bf19d0137d97df43f6933a8"
     },
     {
-      "path": "assets/index-CchmTcyy.css",
-      "bytes": 36198,
-      "sha256": "051b93ed399cc6d640258ab99e797653a078b6297162a6de92fb069e36dbb60a"
+      "path": "assets/index-kaqIXcep.css",
+      "bytes": 47176,
+      "sha256": "b88fb731a1c8abd8b08a105d672a8fcf3e15dfa0afd39c6756cecdb80bbf9d02"
+    },
+    {
+      "path": "audio/README.md",
+      "bytes": 1098,
+      "sha256": "b9329b9dc3c960f25361d173c1819d0849a636b0c8871a60cb18e5349aa8cf82"
+    },
+    {
+      "path": "audio/music-academy-night.mp3",
+      "bytes": 1381499,
+      "sha256": "b11c60a7455de2861c4b1bc1442eb04916a7bacf0df3d30ab2d2ce9e69cc93df"
     },
     {
       "path": "fonts/CormorantGaramond-OFL.txt",
@@ -31,12 +41,12 @@
     {
       "path": "fonts/MoonveilLatin-UI.woff2",
       "bytes": 20776,
-      "sha256": "01d5a7b955bb920576b82947303ef6fe4bd5b1548d76c9472cca43ee887963aa"
+      "sha256": "41983a521a3d20d5b7acc071e31d9075186b3a8af688ca4db26ee21e5df8572d"
     },
     {
       "path": "fonts/MoonveilSerif-UI.woff2",
-      "bytes": 239668,
-      "sha256": "3e1e858445bb818e06f049e78112601e6ceb3ebccdcb58aae959465d08aecaaa"
+      "bytes": 239552,
+      "sha256": "0b1bba9b6c046274ded27657191496b833175fba09aeafd75a17ddcb64a711ad"
     },
     {
       "path": "fonts/NotoSerifSC-OFL.txt",
@@ -50,8 +60,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 821,
-      "sha256": "fd21678bb73cbcff724d6a75b1d316b67ba32d0fdec13b89342b6de7233df2ac"
+      "bytes": 841,
+      "sha256": "efde9696cdb12ac8355cc613717e51e37d32edaa6469ebf66aacd85c5a706762"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",
@@ -342,6 +352,11 @@
       "path": "textures/realistic/old_sandstone_02_roughness_2k.jpg",
       "bytes": 2506137,
       "sha256": "45f4411cfe86daa1637c0a38510a1a27683e71f06037b84543b85a569b76d1cf"
+    },
+    {
+      "path": "textures/realistic/rogland_moonlit_night_environment_1k.hdr",
+      "bytes": 1723744,
+      "sha256": "7ef7e14f6c0b6f1065ddd31b0abc0aaa719df9f5b858912108a4c0c6ec219dc8"
     },
     {
       "path": "textures/realistic/rogland_moonlit_night_environment_2k.hdr",

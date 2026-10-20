@@ -1,6 +1,6 @@
 {
-  "version": "20261018-moonveil-valley-5",
-  "visual": "Unified slate, grey-green and restrained warm windows; complete surrounding mountain forest, aqueduct, bell tower and distant academy wing",
-  "gameplay": "Five optional star memories: approach to collect, aim and cast to awaken",
-  "audio": "Preserved iPhone gain recovery, paused sound controls and native AAC/buffer switching"
+  "version": "20261020-library-chapter-1",
+  "visual": "Moonveil mountain courtyard, academy hub and detailed oak library interior; responsive desktop and phone exploration UI",
+  "gameplay": "Playable P00 prologue, H01 academy hub and P01 library chapter: illumination, traction lessons, archive-cart transport, counterweight lift, registration and safe-exit completion; local campaign checkpoints",
+  "audio": "Original Dreamina library exploration music with MP3 and paired iPhone AAC-LC; destination audio unlock in the portal release gesture, track-aware native controls and preserved iPhone gain recovery; existing spell effects remain unchanged"
 }

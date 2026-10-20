@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-18T06:06:49.786Z",
+  "createdAt": "2026-10-20T10:14:01.648Z",
   "base": "./",
   "files": [
     {
@@ -14,19 +14,19 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "assets/index-Cwf-Ps9K.js",
-      "bytes": 1024569,
-      "sha256": "c36463ce145185b14d2d63f44cf6ac0bf46cd735406d7511214265603fe50d05"
+      "path": "assets/index-BMVOpzyX.js",
+      "bytes": 1095775,
+      "sha256": "4fb228114c793506036e786da801570785d8ed97e25a6431d8912708cc899f20"
     },
     {
-      "path": "assets/index-SOXcbAij.css",
-      "bytes": 51233,
-      "sha256": "e590d6739ab5e3d41df591fb24ea55ea5433a549cb070e9fc5d1c685db69ec10"
+      "path": "assets/index-D1RJF4Xs.css",
+      "bytes": 57126,
+      "sha256": "e9101f3e25b50e81938643b032602659d2a6e72895128a7526914a64d4bae5b6"
     },
     {
       "path": "audio/README.md",
-      "bytes": 1413,
-      "sha256": "fb40413416f8ff3233939ddf38dec7522bc66e7d778d67cea57204018ddd48e1"
+      "bytes": 2294,
+      "sha256": "eb93a12c5c56da845d8c6e9b59dc0e08cd751690dfdc3b54e66cdd967b66f4d5"
     },
     {
       "path": "audio/music-academy-night-aac.m4a",
@@ -37,6 +37,16 @@
       "path": "audio/music-academy-night.mp3",
       "bytes": 1381499,
       "sha256": "b11c60a7455de2861c4b1bc1442eb04916a7bacf0df3d30ab2d2ce9e69cc93df"
+    },
+    {
+      "path": "audio/music-library-aac.m4a",
+      "bytes": 1459475,
+      "sha256": "00067bc5498e80eea537ef2700dc5b13158df0fdec9022a40476155f1eb93a87"
+    },
+    {
+      "path": "audio/music-library.mp3",
+      "bytes": 1741367,
+      "sha256": "a245d8300add446c77da29db69b99f869fb5ac7a7cd865fe9e37d6e5a6f164e2"
     },
     {
       "path": "fonts/CormorantGaramond-OFL.txt",
@@ -66,7 +76,7 @@
     {
       "path": "index.html",
       "bytes": 987,
-      "sha256": "b624a9467df3ea04b394dc2a51886f6f0f6ad279afb658f26a60c80dec267951"
+      "sha256": "7f2c59a6cc9a6d51e88cacb84478d6ef893dc2ee13dc0b014e3f22df7e420a41"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",
@@ -390,8 +400,8 @@
     },
     {
       "path": "version.json",
-      "bytes": 390,
-      "sha256": "97575928fcda76afa5ec74362d071c2d3498b46de26d7fa5304337541db2667b"
+      "bytes": 657,
+      "sha256": "556609270be6f9d9df8142b08ed141f66cbd72d6791e3941438dcb9ae8925114"
     }
   ]
 }

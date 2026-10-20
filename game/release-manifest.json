@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-20T10:46:34.824Z",
+  "createdAt": "2026-10-20T11:20:36.369Z",
   "base": "./",
   "files": [
     {
@@ -14,9 +14,9 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "assets/index-CLjmu2Am.js",
-      "bytes": 1205793,
-      "sha256": "c659bb88777f1dd7c58ede1819dc4f4d8c9ae3ebb44babbfa18098f6da7c4f52"
+      "path": "assets/index-Czh4xHTt.js",
+      "bytes": 1208300,
+      "sha256": "54a989610fb3fccc366f85571fb24ca9b9f9a001f2f7e4584bb8c7d9af428e84"
     },
     {
       "path": "assets/index-DFcP9H4-.css",
@@ -25,8 +25,8 @@
     },
     {
       "path": "audio/README.md",
-      "bytes": 2294,
-      "sha256": "eb93a12c5c56da845d8c6e9b59dc0e08cd751690dfdc3b54e66cdd967b66f4d5"
+      "bytes": 5500,
+      "sha256": "0ae33152a0376e4e4960e8bf174ad5ef72c9fbe4bfc645aceb62e6f4691f0816"
     },
     {
       "path": "audio/music-academy-night-aac.m4a",
@@ -39,6 +39,56 @@
       "sha256": "b11c60a7455de2861c4b1bc1442eb04916a7bacf0df3d30ab2d2ce9e69cc93df"
     },
     {
+      "path": "audio/music-dome-aac.m4a",
+      "bytes": 1386908,
+      "sha256": "e7d8289486d5eb0c9b618fdfc3a77246beb68d21ff39c117164e47349091a208"
+    },
+    {
+      "path": "audio/music-dome.mp3",
+      "bytes": 1681356,
+      "sha256": "82a0fb04c230624859be35c93625090112bfb75a22f38e055822757b0aeabf86"
+    },
+    {
+      "path": "audio/music-forest-aac.m4a",
+      "bytes": 1430902,
+      "sha256": "a50775574aa9fe7a74eb5fcd0311208f2a884775f0dca76baa85bc120e8cec49"
+    },
+    {
+      "path": "audio/music-forest.mp3",
+      "bytes": 1741435,
+      "sha256": "bedf4ef71ab672573c835a2c58a19d285a57a003c3d25eb86f5c542a292fdb93"
+    },
+    {
+      "path": "audio/music-greenhouse-aac.m4a",
+      "bytes": 1424803,
+      "sha256": "1b89471c3f3cbee9cca509e7ccb30d9fbd6542f92381fd7c0c02845810410bc6"
+    },
+    {
+      "path": "audio/music-greenhouse.mp3",
+      "bytes": 1741435,
+      "sha256": "b7a64db4e407ec7b0d38d5974f1bad5ecbb3da8a6d931399c2720569067fccad"
+    },
+    {
+      "path": "audio/music-hub-aac.m4a",
+      "bytes": 1423261,
+      "sha256": "cb8eb687bc36311c48ad4671eb9f3597d45d842e612cce3ed07fc0ef64d3b173"
+    },
+    {
+      "path": "audio/music-hub.mp3",
+      "bytes": 1741438,
+      "sha256": "3c1b286db0f4d81d2daa4b7815ff95da17c9ab5d06c9d51d0dee244aea5d4b51"
+    },
+    {
+      "path": "audio/music-lake-aac.m4a",
+      "bytes": 1420559,
+      "sha256": "fe67feba4e3ddcee57a5ed1a91a37dca1c880a317f46d22eddb1813f2ca51300"
+    },
+    {
+      "path": "audio/music-lake.mp3",
+      "bytes": 1741435,
+      "sha256": "5e6e062565bda6b2da7afe20adcb61732cde86c2b56050be4956782e83f3644b"
+    },
+    {
       "path": "audio/music-library-aac.m4a",
       "bytes": 1459475,
       "sha256": "00067bc5498e80eea537ef2700dc5b13158df0fdec9022a40476155f1eb93a87"
@@ -49,19 +99,39 @@
       "sha256": "a245d8300add446c77da29db69b99f869fb5ac7a7cd865fe9e37d6e5a6f164e2"
     },
     {
+      "path": "audio/music-observatory-aac.m4a",
+      "bytes": 1447568,
+      "sha256": "e5ff5ac43046e3f2fcdad8c808fb62c6691f785eff9b97dbd0183d1f5089cad2"
+    },
+    {
+      "path": "audio/music-observatory.mp3",
+      "bytes": 1741435,
+      "sha256": "d3d15e7aebddc1d3506a63bf49c3883353b15904844bc178adce798d2bfaa4a7"
+    },
+    {
+      "path": "audio/music-vault-aac.m4a",
+      "bytes": 1433074,
+      "sha256": "6d3241bc1e62639ba4d0168e755119286b5d23f52b91bd4aa1aa82b9dc9c47b1"
+    },
+    {
+      "path": "audio/music-vault.mp3",
+      "bytes": 1741447,
+      "sha256": "4de9fafaf942503dc06f6d25759275a43c223b3dd78cbdfec1ab49988b4b035f"
+    },
+    {
       "path": "fonts/CormorantGaramond-OFL.txt",
       "bytes": 4387,
       "sha256": "60700d351cac4650c51f3f9db318d2a420f8b45052dba2715eb5fec41f0f6956"
     },
     {
       "path": "fonts/MoonveilLatin-UI.woff2",
-      "bytes": 20892,
-      "sha256": "dc068bf9f632c2b117e388d3fa4cebd23f810911189bd63c545af36d5ee06d3c"
+      "bytes": 20884,
+      "sha256": "4dde5a519cf9e60342d49705b1b5adbff8bc29e3d5db8aece9a6fc5e5d9331eb"
     },
     {
       "path": "fonts/MoonveilSerif-UI.woff2",
-      "bytes": 347796,
-      "sha256": "1a0e061f2c21398b3de88eefb707d77b9afa627248d24bb85c5e9210e6fda0c9"
+      "bytes": 349036,
+      "sha256": "8f8e0b9ef006c6a36e48dcb763524a2968cc039806c8bd0075ca1a198ec62b14"
     },
     {
       "path": "fonts/NotoSerifSC-OFL.txt",
@@ -75,8 +145,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 1022,
-      "sha256": "0e6584b396f8ed5c611a89a5cd0f8d5c4edb46a93b67587ea79c8e3d20036f01"
+      "bytes": 1021,
+      "sha256": "71054174ad3e7a8fa8dc8127abc0483db43df2c00eb4462123710e783410ab50"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",
@@ -400,8 +470,8 @@
     },
     {
       "path": "version.json",
-      "bytes": 806,
-      "sha256": "c061773da59c5248f7e7440aef7f390ad27e3a4122c931b4da2785e0e25976b1"
+      "bytes": 987,
+      "sha256": "e482c638508a27b0b394d1040d69fdef83adbd71c78523e13cd5b266806ebdcf"
     }
   ]
 }

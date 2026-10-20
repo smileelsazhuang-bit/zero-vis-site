@@ -1,6 +1,6 @@
 {
-  "version": "20261020-complete-campaign-1",
+  "version": "20261020-nine-scene-music-1",
   "visual": "Eight real-time 3D chapters and academy hub, with mountain and academy surroundings, stateful glasshouse, phase bridges, tides, forest landmarks, vault and astral dome; responsive five-spell UI and memory archive",
   "gameplay": "Complete P00-P07 campaign, five spells, both lake/forest branch orders, physical exits, recoverable mechanisms, 24 optional memories, six-second final calibration, ending and free revisit; backward-compatible v1 saves with verified backups",
-  "audio": "Existing original Dreamina exterior and library music with paired iPhone AAC-LC; portal gesture unlock, track-aware controls and gain recovery preserved. Existing synthesized spell effects; iPhone speaker and silent switch require physical-device validation."
+  "audio": "Nine distinct original Dreamina recordings, one per chapter/hub: prologue, hub, library, greenhouse, observatory, lake, forest, vault and dome. Each has a loop-prepared MP3 plus paired AAC-LC. Scene switching reuses one authorized AudioContext, cancels stale downloads/decodes/plays, and preserves mute/compatibility preferences. Existing synthesized spell effects; iPhone speaker and silent switch still require physical-device validation."
 }

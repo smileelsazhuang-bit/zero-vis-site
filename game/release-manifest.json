@@ -1,6 +1,6 @@
 {
   "title": "星穹遗迹 · 月隐学院的来信",
-  "createdAt": "2026-10-20T10:14:01.648Z",
+  "createdAt": "2026-10-20T10:46:34.824Z",
   "base": "./",
   "files": [
     {
@@ -14,14 +14,14 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "assets/index-BMVOpzyX.js",
-      "bytes": 1095775,
-      "sha256": "4fb228114c793506036e786da801570785d8ed97e25a6431d8912708cc899f20"
+      "path": "assets/index-CLjmu2Am.js",
+      "bytes": 1205793,
+      "sha256": "c659bb88777f1dd7c58ede1819dc4f4d8c9ae3ebb44babbfa18098f6da7c4f52"
     },
     {
-      "path": "assets/index-D1RJF4Xs.css",
-      "bytes": 57126,
-      "sha256": "e9101f3e25b50e81938643b032602659d2a6e72895128a7526914a64d4bae5b6"
+      "path": "assets/index-DFcP9H4-.css",
+      "bytes": 59240,
+      "sha256": "92426bd5d4aa10145e54e6658fd61fd7b179b53f7771f723aab93e811b6c8cbe"
     },
     {
       "path": "audio/README.md",
@@ -55,13 +55,13 @@
     },
     {
       "path": "fonts/MoonveilLatin-UI.woff2",
-      "bytes": 20784,
-      "sha256": "9c38f8b43736011003a847568d6f333111e8e25a059c4eb96e54bf6f03ee25ae"
+      "bytes": 20892,
+      "sha256": "dc068bf9f632c2b117e388d3fa4cebd23f810911189bd63c545af36d5ee06d3c"
     },
     {
       "path": "fonts/MoonveilSerif-UI.woff2",
-      "bytes": 269720,
-      "sha256": "272fa5ec1c91b1f285070e314657fc074a3e9311f3ebd2161493d346b8e65dd0"
+      "bytes": 347796,
+      "sha256": "1a0e061f2c21398b3de88eefb707d77b9afa627248d24bb85c5e9210e6fda0c9"
     },
     {
       "path": "fonts/NotoSerifSC-OFL.txt",
@@ -75,8 +75,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 987,
-      "sha256": "7f2c59a6cc9a6d51e88cacb84478d6ef893dc2ee13dc0b014e3f22df7e420a41"
+      "bytes": 1022,
+      "sha256": "0e6584b396f8ed5c611a89a5cd0f8d5c4edb46a93b67587ea79c8e3d20036f01"
     },
     {
       "path": "models/fern_02/LICENSE-CC0.txt",
@@ -400,8 +400,8 @@
     },
     {
       "path": "version.json",
-      "bytes": 657,
-      "sha256": "556609270be6f9d9df8142b08ed141f66cbd72d6791e3941438dcb9ae8925114"
+      "bytes": 806,
+      "sha256": "c061773da59c5248f7e7440aef7f390ad27e3a4122c931b4da2785e0e25976b1"
     }
   ]
 }

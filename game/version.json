@@ -1,6 +1,6 @@
 {
-  "version": "20261020-library-chapter-1",
-  "visual": "Moonveil mountain courtyard, academy hub and detailed oak library interior; responsive desktop and phone exploration UI",
-  "gameplay": "Playable P00 prologue, H01 academy hub and P01 library chapter: illumination, traction lessons, archive-cart transport, counterweight lift, registration and safe-exit completion; local campaign checkpoints",
-  "audio": "Original Dreamina library exploration music with MP3 and paired iPhone AAC-LC; destination audio unlock in the portal release gesture, track-aware native controls and preserved iPhone gain recovery; existing spell effects remain unchanged"
+  "version": "20261020-complete-campaign-1",
+  "visual": "Eight real-time 3D chapters and academy hub, with mountain and academy surroundings, stateful glasshouse, phase bridges, tides, forest landmarks, vault and astral dome; responsive five-spell UI and memory archive",
+  "gameplay": "Complete P00-P07 campaign, five spells, both lake/forest branch orders, physical exits, recoverable mechanisms, 24 optional memories, six-second final calibration, ending and free revisit; backward-compatible v1 saves with verified backups",
+  "audio": "Existing original Dreamina exterior and library music with paired iPhone AAC-LC; portal gesture unlock, track-aware controls and gain recovery preserved. Existing synthesized spell effects; iPhone speaker and silent switch require physical-device validation."
 }
